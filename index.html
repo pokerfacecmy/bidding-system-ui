@@ -1592,29 +1592,37 @@
       <div class="content">
         <!-- ① 首页概览看板 -->
         <section class="panel active" id="panel-overview">
+          <div class="meeting-note">
+            <span class="mn-icon">📌</span>
+            <div>
+              <span class="mn-tag">06-08 评审</span>首页以<strong>信息展示为主、减少操作项</strong>；按<strong>「先采集、后投标」</strong>顺序组织看板；
+              合并原 ECP/ETP 重复看板，采集动态 / 报名动态 / 分析结果集中展示，避免多处重复。
+            </div>
+          </div>
+
           <div class="kpi-grid">
-            <div class="kpi-card">
-              <div class="kpi-icon blue">📋</div>
-              <div class="kpi-body">
-                <label>已导入清单</label>
-                <div class="value">28</div>
-                <div class="trend">本批次共 3 个批次</div>
-              </div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-icon orange">⏳</div>
-              <div class="kpi-body">
-                <label>待投标</label>
-                <div class="value">12</div>
-                <div class="trend up">较上周 +2</div>
-              </div>
-            </div>
             <div class="kpi-card">
               <div class="kpi-icon green">📥</div>
               <div class="kpi-body">
-                <label>今日采集</label>
-                <div class="value">156</div>
-                <div class="trend">ECP 89 · ETP 67</div>
+                <label>今日采集入库</label>
+                <div class="value">152</div>
+                <div class="trend">ECP 89 · ETP 63（双平台同抓）</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon orange">✏️</div>
+              <div class="kpi-body">
+                <label>待人工复核</label>
+                <div class="value">18</div>
+                <div class="trend">规则校验未通过 · 需逐条复核</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon blue">🧭</div>
+              <div class="kpi-body">
+                <label>可投标项目</label>
+                <div class="value">24</div>
+                <div class="trend up">筛选匹配命中 · 不可投 128</div>
               </div>
             </div>
             <div class="kpi-card">
@@ -1622,11 +1630,15 @@
               <div class="kpi-body">
                 <label>紧急预警</label>
                 <div class="value">3</div>
-                <div class="trend down">距截止/开标 &lt; 1 天</div>
+                <div class="trend down">距报名截止/开标 &lt; 1 天</div>
               </div>
             </div>
           </div>
 
+          <div class="card-header" style="background:none;border:none;padding:0 0 12px">
+            <h3>📥 采集动态 · 数据采集看板</h3>
+            <span class="meta">ECP / ETP 已合并展示，避免重复</span>
+          </div>
           <div class="overview-charts">
             <div class="overview-chart-card">
               <div class="chart-header">
@@ -1679,33 +1691,6 @@
 
             <div class="overview-chart-card">
               <div class="chart-header">
-                <h4>投标项目进度</h4>
-                <span class="meta">共 28 项</span>
-              </div>
-              <div class="chart-body">
-                <div class="progress-dist">
-                  <div class="progress-dist-item">
-                    <div class="row"><span>标书编写中</span><strong>8</strong></div>
-                    <div class="progress-dist-track"><div class="progress-dist-fill blue" style="width:29%"></div></div>
-                  </div>
-                  <div class="progress-dist-item">
-                    <div class="row"><span>待解析</span><strong>5</strong></div>
-                    <div class="progress-dist-track"><div class="progress-dist-fill orange" style="width:18%"></div></div>
-                  </div>
-                  <div class="progress-dist-item">
-                    <div class="row"><span>待报名</span><strong>4</strong></div>
-                    <div class="progress-dist-track"><div class="progress-dist-fill orange" style="width:14%"></div></div>
-                  </div>
-                  <div class="progress-dist-item">
-                    <div class="row"><span>已归档</span><strong>11</strong></div>
-                    <div class="progress-dist-track"><div class="progress-dist-fill green" style="width:39%"></div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="overview-chart-card">
-              <div class="chart-header">
                 <h4>省份采集 TOP6</h4>
                 <span class="meta">今日</span>
               </div>
@@ -1740,6 +1725,66 @@
                     <span class="h-bar-label">江西</span>
                     <div class="h-bar-track"><div class="h-bar-fill" style="width:38%"></div></div>
                     <span class="h-bar-value">18</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="overview-chart-card">
+              <div class="chart-header">
+                <h4>当日四类公告分布</h4>
+                <span class="meta">合并 ECP/ETP</span>
+              </div>
+              <div class="chart-body">
+                <div class="progress-dist">
+                  <div class="progress-dist-item">
+                    <div class="row"><span>招标公告</span><strong>64</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill blue" style="width:100%"></div></div>
+                  </div>
+                  <div class="progress-dist-item">
+                    <div class="row"><span>采购公告</span><strong>41</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill green" style="width:64%"></div></div>
+                  </div>
+                  <div class="progress-dist-item">
+                    <div class="row"><span>资格预审</span><strong>28</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill orange" style="width:44%"></div></div>
+                  </div>
+                  <div class="progress-dist-item">
+                    <div class="row"><span>中标候选人</span><strong>19</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill blue" style="width:30%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-header" style="background:none;border:none;padding:8px 0 12px">
+            <h3>📝 投标动态 · 投标作业看板</h3>
+            <span class="meta">第二期重点 · 当前展示框架数据</span>
+          </div>
+          <div class="overview-charts" style="grid-template-columns:repeat(2,1fr)">
+            <div class="overview-chart-card">
+              <div class="chart-header">
+                <h4>投标项目进度</h4>
+                <span class="meta">共 28 项</span>
+              </div>
+              <div class="chart-body">
+                <div class="progress-dist">
+                  <div class="progress-dist-item">
+                    <div class="row"><span>标书编写中</span><strong>8</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill blue" style="width:29%"></div></div>
+                  </div>
+                  <div class="progress-dist-item">
+                    <div class="row"><span>待解析</span><strong>5</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill orange" style="width:18%"></div></div>
+                  </div>
+                  <div class="progress-dist-item">
+                    <div class="row"><span>待报名</span><strong>4</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill orange" style="width:14%"></div></div>
+                  </div>
+                  <div class="progress-dist-item">
+                    <div class="row"><span>已归档</span><strong>11</strong></div>
+                    <div class="progress-dist-track"><div class="progress-dist-fill green" style="width:39%"></div></div>
                   </div>
                 </div>
               </div>
@@ -1850,24 +1895,21 @@
             <div>
               <div class="card" style="margin-bottom: 24px;">
                 <div class="card-header">
-                  <h3>快捷操作</h3>
+                  <h3>常用入口</h3>
+                  <span class="meta">精简操作 · 以查看为主</span>
                 </div>
                 <div class="quick-actions">
-                  <button class="action-btn">
-                    <span class="action-icon">📥</span>
-                    <span>导入投标清单</span>
-                  </button>
-                  <button class="action-btn">
-                    <span class="action-icon">📄</span>
-                    <span>上传招标文件</span>
-                  </button>
                   <button class="action-btn">
                     <span class="action-icon">🔍</span>
                     <span>查看今日采集</span>
                   </button>
                   <button class="action-btn">
                     <span class="action-icon">📊</span>
-                    <span>导出预警清单</span>
+                    <span>下载汇总表</span>
+                  </button>
+                  <button class="action-btn">
+                    <span class="action-icon">🧭</span>
+                    <span>查看可投项目</span>
                   </button>
                 </div>
               </div>
