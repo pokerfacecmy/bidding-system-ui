@@ -3560,7 +3560,139 @@
             </ul>
           </div>
         </section>
-        <section class="panel" id="panel-module-7" data-module="⑦ 投标项目管理" data-desc="导入投标清单生成项目列表，维护报名/进度/保证金状态，开标提醒与时间预警。"></section>
+        <section class="panel" id="panel-module-7">
+          <div class="meeting-note">
+            <span class="mn-icon">📌</span>
+            <div>
+              <span class="mn-tag">06-08 评审</span><span class="phase-badge p2" style="margin-left:0">第二期</span>
+              支持<strong>批量导入投标清单（Excel）</strong>，自动生成工作记录（省份/编号/平台/报名时间/开标时间/报名状态）；关键节点标红提醒；
+              <strong>可投项目列表增加项目原始链接</strong>，领导审批后可直接点击跳转（D-06）。
+            </div>
+          </div>
+
+          <div class="page-toolbar">
+            <div class="page-toolbar-left">
+              <span class="br-badge">D-06 · 第二期框架演示</span>
+            </div>
+            <div>
+              <button class="btn btn-sm">⬆ 批量导入投标清单</button>
+              <button class="btn btn-primary btn-sm">＋ 新建投标项目</button>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue">📋</div>
+              <div class="kpi-body">
+                <label>投标项目</label>
+                <div class="value">28</div>
+                <div class="trend">来自筛选匹配可投项目</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon orange">⏳</div>
+              <div class="kpi-body">
+                <label>待报名</label>
+                <div class="value">8</div>
+                <div class="trend down">2 项今日截止</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green">✅</div>
+              <div class="kpi-body">
+                <label>已报名</label>
+                <div class="value">12</div>
+                <div class="trend">含 6 项已上传文件</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon red">⚠️</div>
+              <div class="kpi-body">
+                <label>节点预警</label>
+                <div class="value">3</div>
+                <div class="trend down">报名/开标 &lt; 1 天</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>投标工作记录</h3>
+              <span class="meta">批量导入生成 · 关键节点标红 · 含项目原始链接</span>
+            </div>
+            <div class="card-body">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>项目名称</th>
+                    <th>省份/平台</th>
+                    <th>招标编号</th>
+                    <th>报名截止</th>
+                    <th>开标时间</th>
+                    <th>报名状态</th>
+                    <th>责任人</th>
+                    <th>原始链接</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="urgent">
+                    <td>湖北省2026年配网工程服务采购</td>
+                    <td>湖北 · ECP</td>
+                    <td>HB-ECP-2026-0612</td>
+                    <td><span class="tag red">今天 17:00</span></td>
+                    <td>06-07 09:30</td>
+                    <td><span class="tag green">已报名</span></td>
+                    <td>张专员</td>
+                    <td><a href="#" class="match-link">🔗 打开公告</a></td>
+                  </tr>
+                  <tr class="urgent">
+                    <td>河南郑州电力设备检测服务</td>
+                    <td>河南 · ECP</td>
+                    <td>HN-ECP-2026-0189</td>
+                    <td><span class="tag red">今天 12:00</span></td>
+                    <td>06-12 10:00</td>
+                    <td><span class="tag orange">未报名</span></td>
+                    <td>李专员</td>
+                    <td><a href="#" class="match-link">🔗 打开公告</a></td>
+                  </tr>
+                  <tr>
+                    <td>四川成都变电站运维服务项目</td>
+                    <td>四川 · ETP</td>
+                    <td>SC-ETP-2026-0345</td>
+                    <td>06-08 16:00</td>
+                    <td><span class="tag orange">明天 14:00</span></td>
+                    <td><span class="tag green">已报名</span></td>
+                    <td>张专员</td>
+                    <td><a href="#" class="match-link">🔗 打开公告</a></td>
+                  </tr>
+                  <tr>
+                    <td>安徽合肥电网智能化改造咨询</td>
+                    <td>安徽 · ETP</td>
+                    <td>AH-ETP-2026-0278</td>
+                    <td>06-10 17:30</td>
+                    <td>06-15 09:00</td>
+                    <td><span class="tag gray">未报名</span></td>
+                    <td>王专员</td>
+                    <td><a href="#" class="match-link">🔗 打开公告</a></td>
+                  </tr>
+                  <tr>
+                    <td>江西南昌配网运维框架服务</td>
+                    <td>江西 · ETP</td>
+                    <td>JX-ETP-2026-0156</td>
+                    <td>06-14 16:00</td>
+                    <td>06-20 09:30</td>
+                    <td><span class="tag green">已报名</span></td>
+                    <td>李专员</td>
+                    <td><a href="#" class="match-link">🔗 打开公告</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="dedup-stats">
+                <span style="color:var(--text-muted)">ECP 报名/上传由人工负责（不纳入系统自动操作）；系统负责生成投标文件，编标处文件可自动同步</span>
+              </div>
+            </div>
+          </div>
+        </section>
         <section class="panel" id="panel-module-8" data-module="⑧ 招标文件智能解析" data-desc="多格式解析，提取核心信息，废标词库识别，评分细则拆解为可量化得分点。"></section>
         <section class="panel" id="panel-module-9" data-module="⑨ 标书内容智能生成" data-desc="大纲生成、任务倒排、商务文件组合、业绩匹配、技术方案与偏离表生成。"></section>
         <section class="panel" id="panel-module-10" data-module="⑩ 智能审查与废标审查" data-desc="废标响应性核查、一致性检查、报价复核、质量自检与提交前文件自检。"></section>
@@ -3764,7 +3896,7 @@
         'module-14': '📁', 'module-15': '⚙️', 'module-16': '🔒'
       };
 
-      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-14'];
+      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-7', 'module-14'];
 
       document.querySelectorAll('.panel[id^="panel-module"]').forEach(function (panel) {
         var id = panel.id.replace('panel-', '');
@@ -3798,6 +3930,7 @@
         'module-screen': '依据公司资质与业务范围自动筛选 · 可投/不可投标注 · 筛选结果进入推送',
         'module-5': '汇总表为核心交付 · 竞争对手两步分析 · 重标编号对接编标处 · 金额比对基于上传投标文件',
         'module-6': '推送摘要与 4 张汇总表对齐 · 分省份统计 · 管理员按角色配置 · 手机看摘要/PC 看详情',
+        'module-7': '批量导入投标清单 · 工作记录与关键节点预警 · 可投项目原始链接（第二期框架）',
         'module-14': '业绩/合同/发票/资质统一维护 · 导入导出 · 版本管理 · 角色权限与溯源'
       };
 
