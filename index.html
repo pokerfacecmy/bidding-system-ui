@@ -3310,15 +3310,24 @@
         </section>
         <!-- ⑥ 消息推送 -->
         <section class="panel" id="panel-module-6">
+          <div class="meeting-note">
+            <span class="mn-icon">📌</span>
+            <div>
+              <span class="mn-tag">06-08 评审</span>推送<strong>摘要格式与 4 张汇总表保持一致</strong>，含<strong>分省份、分 ECP/ETP 统计</strong>；
+              由<strong>系统管理员按员工角色配置</strong>，一次配置无需频繁操作；详细表格<strong>不强制推送</strong>——<strong>领导手机端看摘要、PC 端查详情</strong>；
+              建议<strong>每晚 20:00 定时跑数并推送</strong>。
+            </div>
+          </div>
+
           <div class="schedule-card">
-            <h4>📢 定时推送计划 · BR-07</h4>
-            <div class="time">次日 08:00</div>
-            <p>推送内容：当日 Excel 汇总报表 + 采集统计摘要 + 匹配分析要点<br>渠道：企业微信工作群 + 个人微信（机器人/小程序）</p>
+            <h4>📢 定时推送计划 · D-05</h4>
+            <div class="time">每晚 20:00</div>
+            <p>推送内容：采集统计摘要（与 4 张汇总表对齐 · 分省份 · 分 ECP/ETP）<br>渠道：企业微信机器人 / 个人微信 / 小程序（按角色配置）</p>
           </div>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
-              <span class="br-badge">BR-07 · 微信推送 · 异常告警</span>
+              <span class="br-badge">D-05 · 摘要对齐汇总表 · 角色配置</span>
             </div>
             <div>
               <button class="btn btn-sm">测试推送</button>
@@ -3332,7 +3341,7 @@
               <div class="kpi-body">
                 <label>今日推送</label>
                 <div class="value" style="font-size:20px;color:var(--success)">已成功</div>
-                <div class="trend">06-05 08:00 · 耗时 3.2s</div>
+                <div class="trend">06-05 20:00 · 耗时 3.2s</div>
               </div>
             </div>
             <div class="kpi-card">
@@ -3421,32 +3430,88 @@
 
             <div class="card">
               <div class="card-header">
-                <h3>微信推送通道状态</h3>
+                <h3>推送摘要预览（与汇总表对齐）</h3>
+                <span class="meta">手机看摘要 · PC 看详情</span>
               </div>
               <div class="card-body" style="padding:16px 20px">
-                <div style="display:flex;flex-direction:column;gap:12px;font-size:13px">
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);border-radius:var(--radius)">
-                    <span>🤖 企业微信机器人</span>
-                    <span class="tag green">在线</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);border-radius:var(--radius)">
-                    <span>📱 个人微信推送服务</span>
-                    <span class="tag green">在线</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);border-radius:var(--radius)">
-                    <span>👥 投标业务群 Webhook</span>
-                    <span class="tag green">正常 · 最后心跳 30s 前</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--warning-bg);border-radius:var(--radius)">
-                    <span>⚠ 小程序推送（备用通道）</span>
-                    <span class="tag orange">Token 3 天后过期</span>
-                  </div>
+                <div class="push-preview">
+                  <div class="pp-head">🤖 投标采集日报 · 2026-06-05 20:00</div>
+                  <div class="pp-line"><span>今日采集入库</span><strong>152 条</strong></div>
+                  <div class="pp-line"><span>　ECP / ETP</span><span>89 / 63</span></div>
+                  <div class="pp-divider"></div>
+                  <div class="pp-line"><span>伙伴省 ECP</span><span>52</span></div>
+                  <div class="pp-line"><span>伙伴省 ETP</span><span>37</span></div>
+                  <div class="pp-line"><span>外省 ECP</span><span>37</span></div>
+                  <div class="pp-line"><span>外省 ETP</span><span>26</span></div>
+                  <div class="pp-divider"></div>
+                  <div class="pp-line"><span>可投标项目</span><strong style="color:var(--success)">24</strong></div>
+                  <div class="pp-line"><span>分省 TOP</span><span>湖北47 河南34 四川27</span></div>
+                  <div style="margin-top:8px;color:var(--text-muted)">详细 4 张汇总表请登录 PC 端查看 ▸</div>
                 </div>
-                <div style="margin-top:16px;padding:12px;background:#F8FAFC;border-radius:var(--radius);font-size:12px;color:var(--text-secondary);line-height:1.6">
-                  <strong>今日推送摘要预览：</strong><br>
-                  采集 152 条（ECP 89 / ETP 63）· 附件 287 个 · 提取确认 134 条 · 匹配 47 组 · 待处理告警 2 条
+                <div style="margin-top:14px;font-size:12px;color:var(--text-secondary);line-height:1.6">
+                  <strong>说明：</strong>摘要分省份 / 分平台统计，格式与 4 张汇总表一致；详细表格不强制推送。
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>按角色配置推送（管理员）</h3>
+              <span class="meta">D-05 · 一次配置无需频繁操作</span>
+            </div>
+            <div class="card-body">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>角色</th>
+                    <th>接收人</th>
+                    <th>推送渠道</th>
+                    <th>推送内容</th>
+                    <th>终端</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>分管领导</strong></td>
+                    <td>王总 等 2 人</td>
+                    <td><span class="tag blue">个人微信</span></td>
+                    <td>仅统计摘要</td>
+                    <td>📱 手机</td>
+                    <td><span class="switch-pill" title="已开启"></span></td>
+                    <td class="cell-actions"><button class="btn btn-sm">编辑</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>投标专员</strong></td>
+                    <td>张专员 等 6 人</td>
+                    <td><span class="tag blue">企业微信群</span></td>
+                    <td>摘要 + 4 张汇总表</td>
+                    <td>💻 PC + 手机</td>
+                    <td><span class="switch-pill" title="已开启"></span></td>
+                    <td class="cell-actions"><button class="btn btn-sm">编辑</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>系统管理员</strong></td>
+                    <td>李管理 等 2 人</td>
+                    <td><span class="tag blue">企业微信群</span></td>
+                    <td>摘要 + 异常告警</td>
+                    <td>💻 PC</td>
+                    <td><span class="switch-pill" title="已开启"></span></td>
+                    <td class="cell-actions"><button class="btn btn-sm">编辑</button></td>
+                  </tr>
+                  <tr>
+                    <td>外省业务组</td>
+                    <td>—</td>
+                    <td><span class="tag gray">小程序（备用）</span></td>
+                    <td>外省 ECP/ETP 摘要</td>
+                    <td>📱 手机</td>
+                    <td><span class="switch-pill off" title="未开启"></span></td>
+                    <td class="cell-actions"><button class="btn btn-sm btn-primary">启用</button></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
