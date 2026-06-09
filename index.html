@@ -1255,6 +1255,236 @@
       .dashboard-grid { grid-template-columns: 1fr; }
       .overview-charts { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ===== 会议修订版新增样式（2026-06-08 评审意见） ===== */
+
+    /* 会议意见 / 需求标注横幅 */
+    .meeting-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: linear-gradient(0deg, #FEFCE8, #FEFCE8), var(--surface);
+      border: 1px solid #FDE68A;
+      border-left: 4px solid var(--warning);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #92400E;
+      line-height: 1.6;
+    }
+    .meeting-note .mn-icon { font-size: 16px; line-height: 1.4; }
+    .meeting-note strong { color: #78350F; }
+    .meeting-note .mn-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--warning);
+      color: #fff;
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-right: 6px;
+      white-space: nowrap;
+    }
+
+    /* 期次徽标（侧栏分组） */
+    .phase-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 8px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .phase-badge.p1 { background: rgba(5, 150, 105, 0.2); color: #6EE7B7; }
+    .phase-badge.p2 { background: rgba(148, 163, 184, 0.2); color: #CBD5E1; }
+
+    /* 标签补充配色 */
+    .tag.purple { background: #F5F3FF; color: #7C3AED; }
+    .tag.yellow { background: #FEFCE8; color: #A16207; }
+    .tag.outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+
+    /* 行级高亮：可投 / 不可投 */
+    tr.row-eligible { background: #F0FDF4; }
+    tr.row-eligible:hover { background: #DCFCE7; }
+    tr.row-ineligible { background: #FFFBEB; }
+    tr.row-ineligible:hover { background: #FEF3C7; }
+    tr.row-focus td:first-child { box-shadow: inset 3px 0 0 var(--primary); }
+
+    /* 业务流程步骤条 */
+    .flow-steps {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 14px 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 96px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      padding: 4px 8px;
+      text-align: center;
+    }
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -6px;
+      top: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .flow-step .fs-dot {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+    .flow-step.active .fs-dot { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .flow-step.new .fs-dot { background: var(--success); color: #fff; border-color: var(--success); }
+    .flow-step .fs-label { font-size: 12px; color: var(--text-secondary); }
+    .flow-step.active .fs-label { color: var(--primary); font-weight: 600; }
+    .flow-step.new .fs-label { color: var(--success); font-weight: 600; }
+    .flow-step .fs-new-tag {
+      font-size: 10px; color: #fff; background: var(--success);
+      padding: 0 6px; border-radius: 8px;
+    }
+
+    /* 汇总表分组标签页（4 表 + 总表） */
+    .summary-tabs {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      padding: 4px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .summary-tab {
+      padding: 7px 14px;
+      font-size: 13px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .summary-tab.active { background: var(--surface); color: var(--primary); font-weight: 600; box-shadow: var(--shadow-sm); }
+    .summary-tab.total.active { color: var(--success); }
+    .summary-tab .count-badge {
+      font-size: 11px;
+      background: var(--bg);
+      color: var(--text-secondary);
+      padding: 0 7px;
+      border-radius: 10px;
+    }
+    .summary-tab.active .count-badge { background: var(--info-bg); color: var(--primary); }
+
+    /* 资质卡片网格 */
+    .qual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .qual-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      background: var(--surface);
+    }
+    .qual-card h5 { font-size: 13px; color: var(--text-secondary); font-weight: 600; margin-bottom: 6px; display:flex; align-items:center; gap:6px; }
+    .qual-card .qual-value { font-size: 15px; font-weight: 600; color: var(--text); }
+    .qual-card .qual-meta { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+    /* 上传 / 导入投放区 */
+    .dropzone {
+      border: 1px dashed var(--primary-light);
+      border-radius: var(--radius);
+      background: var(--info-bg);
+      padding: 22px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    .dropzone .dz-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+    .dropzone strong { color: var(--primary); }
+
+    /* 版本时间线 */
+    .version-timeline { list-style: none; position: relative; padding-left: 22px; }
+    .version-timeline::before {
+      content: ""; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: var(--border);
+    }
+    .version-timeline li { position: relative; padding: 0 0 16px 14px; font-size: 13px; }
+    .version-timeline li::before {
+      content: ""; position: absolute; left: -20px; top: 4px; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--surface); border: 2px solid var(--primary);
+    }
+    .version-timeline li.current::before { background: var(--primary); }
+    .version-timeline .v-tag { font-weight: 600; color: var(--text); }
+    .version-timeline time { display: block; font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* 配置项行（定时/渠道等） */
+    .config-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .config-row:last-child { border-bottom: none; }
+    .config-row .cr-label { color: var(--text-secondary); }
+    .config-row .cr-label strong { color: var(--text); display: block; font-size: 13px; }
+    .config-row .cr-label small { color: var(--text-muted); font-size: 11px; }
+
+    /* 伪开关 */
+    .switch-pill {
+      display: inline-flex; align-items: center; width: 40px; height: 22px;
+      border-radius: 11px; background: var(--success); position: relative; cursor: pointer;
+    }
+    .switch-pill.off { background: var(--text-muted); }
+    .switch-pill::after {
+      content: ""; position: absolute; top: 2px; left: 20px; width: 18px; height: 18px;
+      border-radius: 50%; background: #fff; transition: left 0.15s;
+    }
+    .switch-pill.off::after { left: 2px; }
+
+    /* 摘要卡片（推送预览，仿手机端） */
+    .push-preview {
+      max-width: 340px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #F8FAFC;
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .push-preview .pp-head {
+      font-weight: 600; color: var(--primary); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .push-preview .pp-line { display: flex; justify-content: space-between; padding: 2px 0; }
+    .push-preview .pp-divider { border-top: 1px dashed var(--border); margin: 8px 0; }
+
+    @media (max-width: 1400px) {
+      .qual-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -1277,24 +1507,32 @@
           <span>概览</span>
         </div>
 
-        <div class="nav-section-label">业务模块</div>
+        <div class="nav-section-label">第一期 · 数据采集</div>
         <div class="nav-group open" data-group="lead">
           <div class="nav-item nav-group-toggle">
-            <span><span class="icon">🔍</span> 线索采集</span>
+            <span><span class="icon">🔍</span> 数据采集全链路</span>
             <span class="chevron">▶</span>
           </div>
           <div class="nav-sub">
             <div class="nav-item" data-panel="module-2" data-title="数据收集">数据收集</div>
             <div class="nav-item" data-panel="module-3" data-title="招标信息下载与存储">下载与存储</div>
-            <div class="nav-item" data-panel="module-4" data-title="整理提取">整理提取</div>
-            <div class="nav-item" data-panel="module-5" data-title="数据匹配比对分析">匹配比对分析</div>
+            <div class="nav-item" data-panel="module-4" data-title="整理提取与人工复核">整理提取 / 复核</div>
+            <div class="nav-item" data-panel="module-screen" data-title="项目筛选匹配">项目筛选匹配 <span class="phase-badge p1">新增</span></div>
+            <div class="nav-item" data-panel="module-5" data-title="数据匹配比对分析">数据匹配分析</div>
             <div class="nav-item" data-panel="module-6" data-title="消息推送">消息推送</div>
           </div>
         </div>
 
+        <div class="nav-section-label">第一期 · 资源库</div>
+        <div class="nav-item" data-panel="module-14" data-title="投标资源库">
+          <span class="icon">📁</span>
+          <span>投标资源库</span>
+        </div>
+
+        <div class="nav-section-label">第二期 · 投标作业</div>
         <div class="nav-group" data-group="bidding">
           <div class="nav-item nav-group-toggle">
-            <span><span class="icon">📝</span> 投标作业</span>
+            <span><span class="icon">📝</span> 投标作业<span class="phase-badge p2">后期</span></span>
             <span class="chevron">▶</span>
           </div>
           <div class="nav-sub">
@@ -1308,11 +1546,7 @@
           </div>
         </div>
 
-        <div class="nav-section-label">资源与系统</div>
-        <div class="nav-item" data-panel="module-14" data-title="数据资料库">
-          <span class="icon">📁</span>
-          <span>资源</span>
-        </div>
+        <div class="nav-section-label">系统</div>
         <div class="nav-group" data-group="system">
           <div class="nav-item nav-group-toggle">
             <span><span class="icon">⚙️</span> 系统</span>
@@ -2868,13 +3102,13 @@
   <script>
     (function () {
       const icons = {
-        'module-2': '🔍', 'module-3': '💾', 'module-4': '📑', 'module-5': '📈',
+        'module-2': '🔍', 'module-3': '💾', 'module-4': '📑', 'module-screen': '🧭', 'module-5': '📈',
         'module-6': '📢', 'module-7': '📋', 'module-8': '📄', 'module-9': '✍️',
         'module-10': '🔎', 'module-11': '🎯', 'module-12': '📦', 'module-13': '✅',
         'module-14': '📁', 'module-15': '⚙️', 'module-16': '🔒'
       };
 
-      var leadModules = ['module-2', 'module-3', 'module-4', 'module-5', 'module-6'];
+      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-14'];
 
       document.querySelectorAll('.panel[id^="panel-module"]').forEach(function (panel) {
         var id = panel.id.replace('panel-', '');
@@ -2901,12 +3135,14 @@
       document.getElementById('currentDate').textContent = formatDate(new Date());
 
       var subtitles = {
-        overview: '快速掌握投标全局 · 关键节点一目了然',
-        'module-2': 'ECP/ETP 自动采集 · 省份类型筛选 · 当日去重 · 每日 23:50 定时执行',
+        overview: '先采集后投标 · 信息展示为主 · 核心指标集中看板',
+        'module-2': 'ECP/ETP 双平台同时采集 · 输出 4 张分类汇总表 + 1 张总表 · 省份配置 / 定时 / 手动补录',
         'module-3': '按日期文件夹归档 · 附件自动下载 · 服务器存储与本地下载',
-        'module-4': '嵌套解压与完整性校验 · OCR+LLM 提取 · 人工校验 · Excel 报表',
-        'module-5': '招标与中标候选人关联匹配 · 中标率/价格/周期/竞争对手分析',
-        'module-6': '次日 8:00 推送 Excel 与摘要 · 微信工作群 · 异常立即告警'
+        'module-4': '解压与完整性校验 · OCR+LLM 提取 · 人工复核（全量校验记录）· 修正实时同步',
+        'module-screen': '依据公司资质与业务范围自动筛选 · 可投/不可投标注 · 筛选结果进入推送',
+        'module-5': '汇总表为核心交付 · 竞争对手两步分析 · 重标编号对接编标处 · 金额比对基于上传投标文件',
+        'module-6': '推送摘要与 4 张汇总表对齐 · 分省份统计 · 管理员按角色配置 · 手机看摘要/PC 看详情',
+        'module-14': '业绩/合同/发票/资质统一维护 · 导入导出 · 版本管理 · 角色权限与溯源'
       };
 
       /* ECP/ETP 平台筛选 */
