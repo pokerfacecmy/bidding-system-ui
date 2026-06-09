@@ -3567,7 +3567,188 @@
         <section class="panel" id="panel-module-11" data-module="⑪ 评分标准智能评分测算" data-desc="得分点匹配定位、报价分测算、综合得分与中标概率预估。"></section>
         <section class="panel" id="panel-module-12" data-module="⑫ 投标文件生成" data-desc="一键生成商务/技术/报价文件，多模板支持，定稿后双层 PDF 转换。"></section>
         <section class="panel" id="panel-module-13" data-module="⑬ 投标文件审核" data-desc="初审/终审流转，退回修改，编制工作量与退改统计。"></section>
-        <section class="panel" id="panel-module-14" data-module="⑭ 数据资料库" data-desc="统一管理资质、证书、财报、业绩与标准规范，证书到期 90 天预警，标书归档。"></section>
+        <section class="panel" id="panel-module-14">
+          <div class="meeting-note">
+            <span class="mn-icon">⭐</span>
+            <div>
+              <span class="mn-tag">第一期重点</span>统一维护<strong>业绩、合同、发票、审计报告、人员资质</strong>等；支持<strong>导入 / 导出</strong>便于跨项目复用；
+              写标时可<strong>插入图文素材</strong>（施工图、现场图），供 AI <strong>图文混排</strong>调用；资源支持<strong>版本管理、角色权限、溯源追溯</strong>。
+            </div>
+          </div>
+
+          <div class="page-toolbar">
+            <div class="page-toolbar-left">
+              <span class="br-badge">第一期 · B-07 资源初始数据</span>
+            </div>
+            <div>
+              <button class="btn btn-sm">⬆ 导入资源</button>
+              <button class="btn btn-sm">⬇ 批量导出</button>
+              <button class="btn btn-primary btn-sm">＋ 上传资源</button>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue">📁</div>
+              <div class="kpi-body">
+                <label>资源总数</label>
+                <div class="value">428</div>
+                <div class="trend">6 大类 · 含图文素材</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green">🏆</div>
+              <div class="kpi-body">
+                <label>业绩库</label>
+                <div class="value">36</div>
+                <div class="trend">近 3 年同类业绩</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon orange">⏰</div>
+              <div class="kpi-body">
+                <label>即将到期</label>
+                <div class="value">3</div>
+                <div class="trend down">证书 90 天内到期</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon blue">🕓</div>
+              <div class="kpi-body">
+                <label>本月更新</label>
+                <div class="value">24</div>
+                <div class="trend">均有版本与溯源记录</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:24px">
+            <div class="card-header" style="padding:0;border:none">
+              <div class="summary-tabs">
+                <button class="summary-tab total active">全部 <span class="count-badge">428</span></button>
+                <button class="summary-tab">业绩</button>
+                <button class="summary-tab">合同</button>
+                <button class="summary-tab">发票</button>
+                <button class="summary-tab">审计报告</button>
+                <button class="summary-tab">人员资质</button>
+                <button class="summary-tab">图文素材</button>
+              </div>
+              <span class="meta" style="padding-right:20px">支持导入导出 · 跨项目复用</span>
+            </div>
+            <div class="card-body">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>资源名称</th>
+                    <th>类型</th>
+                    <th>版本</th>
+                    <th>权限</th>
+                    <th>上传人</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>配网运维类业绩汇编</td>
+                    <td><span class="tag green">业绩</span></td>
+                    <td><span class="tag blue">v3.2</span></td>
+                    <td><span class="tag outline">部门可见</span></td>
+                    <td>张专员</td>
+                    <td>06-04 10:21</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
+                  </tr>
+                  <tr>
+                    <td>承装(修、试)电力设施许可证</td>
+                    <td><span class="tag blue">人员资质</span></td>
+                    <td><span class="tag blue">v2.0</span></td>
+                    <td><span class="tag outline">全员可见</span></td>
+                    <td>李管理</td>
+                    <td>05-28 16:40</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
+                  </tr>
+                  <tr class="row-ineligible">
+                    <td>ISO9001 质量管理体系认证</td>
+                    <td><span class="tag blue">人员资质</span></td>
+                    <td><span class="tag blue">v1.5</span></td>
+                    <td><span class="tag outline">全员可见</span></td>
+                    <td>李管理</td>
+                    <td>2025-08-12</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm btn-primary">更新</button><span class="tag orange">90 天到期</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025 年度审计报告</td>
+                    <td><span class="tag purple">审计报告</span></td>
+                    <td><span class="tag blue">v1.0</span></td>
+                    <td><span class="tag outline">受限</span></td>
+                    <td>财务部</td>
+                    <td>05-15 09:05</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
+                  </tr>
+                  <tr>
+                    <td>变电站现场施工图集</td>
+                    <td><span class="tag yellow">图文素材</span></td>
+                    <td><span class="tag blue">v4.1</span></td>
+                    <td><span class="tag outline">部门可见</span></td>
+                    <td>王工</td>
+                    <td>06-03 14:30</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">插入标书</button><button class="btn btn-sm">导出</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="split-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3>版本管理与溯源</h3>
+                <span class="meta">配网运维类业绩汇编</span>
+              </div>
+              <div class="card-body">
+                <ul class="version-timeline">
+                  <li class="current">
+                    <span class="v-tag">v3.2（当前）</span> 新增 6 项 2026 年业绩
+                    <time>张专员 · 06-04 10:21 · 来源：手动上传</time>
+                  </li>
+                  <li>
+                    <span class="v-tag">v3.1</span> 修正 2 项金额字段
+                    <time>李管理 · 05-20 11:02 · 来源：修正同步</time>
+                  </li>
+                  <li>
+                    <span class="v-tag">v3.0</span> 从中标结果库批量导入
+                    <time>系统 · 05-01 20:00 · 来源：自动归集</time>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>角色权限</h3>
+                <span class="meta">谁可查看 / 编辑 / 导出</span>
+              </div>
+              <div class="card-body" style="padding-top:8px">
+                <div class="config-row">
+                  <div class="cr-label"><strong>投标专员</strong><small>业绩 / 合同 / 图文素材</small></div>
+                  <span>查看 · 编辑 · 导出</span>
+                </div>
+                <div class="config-row">
+                  <div class="cr-label"><strong>财务人员</strong><small>发票 / 审计报告</small></div>
+                  <span>查看 · 编辑</span>
+                </div>
+                <div class="config-row">
+                  <div class="cr-label"><strong>普通员工</strong><small>公开资质</small></div>
+                  <span>仅查看</span>
+                </div>
+                <div class="config-row">
+                  <div class="cr-label"><strong>系统管理员</strong><small>全部资源</small></div>
+                  <span>全部权限 · 溯源审计</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section class="panel" id="panel-module-15" data-module="⑮ 系统管理运维" data-desc="抓取规则配置、日志查看、账号管理、断点续传与历史补录。"></section>
         <section class="panel" id="panel-module-16" data-module="⑯ 系统安全与合规" data-desc="加密存储传输、权限隔离、操作审计日志、可选数字水印。"></section>
       </div>
