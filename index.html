@@ -3041,13 +3041,22 @@
         </section>
         <!-- ⑤ 数据匹配比对分析 -->
         <section class="panel" id="panel-module-5">
+          <div class="meeting-note">
+            <span class="mn-icon">📌</span>
+            <div>
+              <span class="mn-tag">06-08 评审</span><strong>以汇总表下载为核心交付，分析功能从简（避免过度设计）</strong>；
+              竞争对手分析分两步：<strong>① 基于招标公告全量分析（发现新进对手）② 基于中标结果分析（与自身投标对比）</strong>；
+              新增<strong>重标项目编号</strong>与编标处 P4 系统按包编号对接；金额比对<strong>基于用户上传的投标文件</strong>。
+            </div>
+          </div>
+
           <div class="page-toolbar">
             <div class="page-toolbar-left">
-              <span class="br-badge">BR-16 · 中标率/价格/周期 P1-P2</span>
+              <span class="br-badge">D-10 竞对两步 · D-11 重标编号 · 金额比对</span>
             </div>
             <div>
               <button class="btn btn-sm">重新匹配</button>
-              <button class="btn btn-primary btn-sm">导出分析报告</button>
+              <button class="btn btn-primary btn-sm">⬇ 下载汇总表（核心交付）</button>
             </div>
           </div>
 
@@ -3090,7 +3099,7 @@
             <div class="card">
               <div class="card-header">
                 <h3>招标 ↔ 中标候选人匹配</h3>
-                <span class="meta">按编号/分标/包号/项目名称</span>
+                <span class="meta">D-11 · 重标编号与编标处 P4 按包编号唯一关联</span>
               </div>
               <div class="card-body">
                 <table class="data-table">
@@ -3098,8 +3107,8 @@
                     <tr>
                       <th>招标公告</th>
                       <th>编号</th>
+                      <th>重标编号(P4)</th>
                       <th>中标候选人公示</th>
-                      <th>匹配方式</th>
                       <th>第一候选人</th>
                       <th>中标金额</th>
                       <th>状态</th>
@@ -3109,8 +3118,8 @@
                     <tr>
                       <td>安徽合肥电网智能化改造咨询</td>
                       <td>AH-ETP-2026-0278</td>
+                      <td><span class="tag blue">P4-2026-A0231</span></td>
                       <td><span class="match-link">→ 同编号公示 ✓</span></td>
-                      <td>招标编号</td>
                       <td>安徽XX工程咨询有限公司</td>
                       <td>368 万</td>
                       <td><span class="tag green">已匹配</span></td>
@@ -3118,8 +3127,8 @@
                     <tr>
                       <td>江西南昌配网运维框架服务</td>
                       <td>JX-ETP-2026-0156</td>
-                      <td><span class="match-link">→ JX-ETP-2026-0156-C1</span></td>
-                      <td>分标+包号</td>
+                      <td><span class="tag blue">P4-2026-J0177</span></td>
+                      <td><span class="match-link">→ 0156-C1（包号）</span></td>
                       <td>江西YY电力服务有限公司</td>
                       <td>—</td>
                       <td><span class="tag green">已匹配</span></td>
@@ -3127,8 +3136,8 @@
                     <tr>
                       <td>湖北宜昌线路巡检框架服务</td>
                       <td>HB-ECP-2026-0618</td>
+                      <td><span class="tag blue">P4-2026-H0312</span></td>
                       <td><span class="match-link" style="color:var(--text-muted)">— 暂无公示</span></td>
-                      <td>—</td>
                       <td>—</td>
                       <td>—</td>
                       <td><span class="tag gray">待公示</span></td>
@@ -3136,8 +3145,8 @@
                     <tr>
                       <td>河南郑州电力设备检测服务</td>
                       <td>HN-ECP-2026-0189</td>
+                      <td><span class="tag orange">未关联</span></td>
                       <td><span class="match-link">→ 项目名称模糊匹配</span></td>
-                      <td>项目名称</td>
                       <td>河南ZZ检测技术有限公司</td>
                       <td>142 万</td>
                       <td><span class="tag orange">待确认</span></td>
@@ -3145,8 +3154,8 @@
                     <tr>
                       <td>四川成都变电站运维服务项目</td>
                       <td>SC-ETP-2026-0345</td>
+                      <td><span class="tag blue">P4-2026-S0098</span></td>
                       <td><span class="match-link" style="color:var(--text-muted)">— 暂无公示</span></td>
-                      <td>—</td>
                       <td>—</td>
                       <td>—</td>
                       <td><span class="tag gray">待公示</span></td>
@@ -3159,16 +3168,30 @@
             <div>
               <div class="card" style="margin-bottom:24px">
                 <div class="card-header">
-                  <h3>中标率趋势</h3>
-                  <span class="meta">近 6 个月</span>
+                  <h3>金额比对分析</h3>
+                  <span class="meta">基于已上传投标文件</span>
                 </div>
-                <div class="mini-chart">
-                  <div class="mini-bar" style="height:60px"><div class="bar-fill" style="height:28%"></div><label>1月</label></div>
-                  <div class="mini-bar" style="height:60px"><div class="bar-fill" style="height:35%"></div><label>2月</label></div>
-                  <div class="mini-bar" style="height:60px"><div class="bar-fill" style="height:42%"></div><label>3月</label></div>
-                  <div class="mini-bar" style="height:60px"><div class="bar-fill" style="height:38%"></div><label>4月</label></div>
-                  <div class="mini-bar" style="height:60px"><div class="bar-fill" style="height:45%"></div><label>5月</label></div>
-                  <div class="mini-bar" style="height:60px"><div class="bar-fill" style="height:32%"></div><label>6月</label></div>
+                <div class="card-body" style="padding-top:12px">
+                  <div class="dropzone" style="padding:16px">
+                    <span class="dz-icon" style="font-size:22px">📄</span>
+                    上传<strong>我方投标文件</strong>，与公告/中标结果比对
+                    <div style="margin-top:10px"><button class="btn btn-sm btn-primary">上传投标文件</button></div>
+                  </div>
+                  <table class="data-table" style="font-size:12px;margin-top:12px">
+                    <thead><tr><th>项目</th><th>我方报价</th><th>中标价</th><th>差距</th></tr></thead>
+                    <tbody>
+                      <tr><td>安徽咨询</td><td>372 万</td><td>368 万</td><td><span class="tag orange">+1.1%</span></td></tr>
+                      <tr><td>河南检测</td><td>150 万</td><td>142 万</td><td><span class="tag red">+5.6%</span></td></tr>
+                      <tr><td>江西运维</td><td>198 万</td><td>—</td><td><span class="tag gray">待公示</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>中标率概览</h3>
+                  <span class="meta">从简 · 详细分析后期</span>
                 </div>
                 <div class="stat-row">
                   <div class="stat-box"><div class="num">28</div><div class="lbl">参与项目</div></div>
@@ -3176,87 +3199,112 @@
                   <div class="stat-box"><div class="num">5</div><div class="lbl">最终中标</div></div>
                 </div>
               </div>
-
-              <div class="card">
-                <div class="card-header">
-                  <h3>价格分析</h3>
-                  <span class="meta">中标价 vs 最高限价</span>
-                </div>
-                <div class="stat-row">
-                  <div class="stat-box"><div class="num">82%</div><div class="lbl">最低折扣</div></div>
-                  <div class="stat-box"><div class="num">89%</div><div class="lbl">平均折扣</div></div>
-                  <div class="stat-box"><div class="num">96%</div><div class="lbl">最高折扣</div></div>
-                </div>
-              </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header">
-              <h3>竞争对手频次分析</h3>
-              <span class="meta">P1 · 重点单位标注</span>
+          <div class="card-header" style="background:none;border:none;padding:0 0 12px">
+            <h3>竞争对手分析（重新设计 · 两步法）</h3>
+            <span class="meta">D-10 · 招标公告全量 + 中标结果对比</span>
+          </div>
+          <div class="split-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3>步骤一 · 基于招标公告全量分析</h3>
+                <span class="meta">发现新进竞争对手</span>
+              </div>
+              <div class="card-body">
+                <table class="data-table" style="font-size:12px">
+                  <thead>
+                    <tr>
+                      <th>潜在竞争对手</th>
+                      <th>出现频次</th>
+                      <th>常投区域</th>
+                      <th>常投类型</th>
+                      <th>标注</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>华中XX电力工程有限公司</strong></td>
+                      <td>23</td>
+                      <td>湖北、河南</td>
+                      <td>服务类</td>
+                      <td><span class="tag red">重点对手</span></td>
+                    </tr>
+                    <tr>
+                      <td>湖南新锐电力科技有限公司</td>
+                      <td>6</td>
+                      <td>湖南</td>
+                      <td>运维服务</td>
+                      <td><span class="tag purple">新进对手</span></td>
+                    </tr>
+                    <tr>
+                      <td>安徽XX工程咨询有限公司</td>
+                      <td>15</td>
+                      <td>安徽、江西</td>
+                      <td>咨询类</td>
+                      <td><span class="tag orange">关注</span></td>
+                    </tr>
+                    <tr>
+                      <td>江西智维新能源有限公司</td>
+                      <td>4</td>
+                      <td>江西</td>
+                      <td>配网运维</td>
+                      <td><span class="tag purple">新进对手</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="card-body">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>竞争对手</th>
-                    <th>出现频次</th>
-                    <th>中标次数</th>
-                    <th>常投区域</th>
-                    <th>常投类型</th>
-                    <th>平均报价折扣</th>
-                    <th>标注</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>华中XX电力工程有限公司</strong></td>
-                    <td>23</td>
-                    <td>7</td>
-                    <td>湖北、河南</td>
-                    <td>服务类</td>
-                    <td>87%</td>
-                    <td><span class="tag red">重点对手</span></td>
-                  </tr>
-                  <tr>
-                    <td>安徽XX工程咨询有限公司</td>
-                    <td>15</td>
-                    <td>4</td>
-                    <td>安徽、江西</td>
-                    <td>咨询类</td>
-                    <td>91%</td>
-                    <td><span class="tag orange">关注</span></td>
-                  </tr>
-                  <tr>
-                    <td>四川YY运维服务有限公司</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>四川、重庆</td>
-                    <td>运维服务</td>
-                    <td>85%</td>
-                    <td><span class="tag orange">关注</span></td>
-                  </tr>
-                  <tr>
-                    <td>河南ZZ检测技术有限公司</td>
-                    <td>9</td>
-                    <td>2</td>
-                    <td>河南</td>
-                    <td>检测服务</td>
-                    <td>93%</td>
-                    <td><span class="tag gray">—</span></td>
-                  </tr>
-                  <tr>
-                    <td>江西YY电力服务有限公司</td>
-                    <td>8</td>
-                    <td>1</td>
-                    <td>江西、湖南</td>
-                    <td>配网运维</td>
-                    <td>88%</td>
-                    <td><span class="tag gray">—</span></td>
-                  </tr>
-                </tbody>
-              </table>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>步骤二 · 基于中标结果分析</h3>
+                <span class="meta">与自身投标情况对比</span>
+              </div>
+              <div class="card-body">
+                <table class="data-table" style="font-size:12px">
+                  <thead>
+                    <tr>
+                      <th>对手</th>
+                      <th>中标次数</th>
+                      <th>与我方交锋</th>
+                      <th>我方胜/负</th>
+                      <th>平均报价折扣</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>华中XX电力工程</strong></td>
+                      <td>7</td>
+                      <td>5</td>
+                      <td><span class="tag red">1 胜 / 4 负</span></td>
+                      <td>87%</td>
+                    </tr>
+                    <tr>
+                      <td>安徽XX工程咨询</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td><span class="tag orange">1 胜 / 1 负</span></td>
+                      <td>91%</td>
+                    </tr>
+                    <tr>
+                      <td>四川YY运维服务</td>
+                      <td>3</td>
+                      <td>1</td>
+                      <td><span class="tag green">1 胜 / 0 负</span></td>
+                      <td>85%</td>
+                    </tr>
+                    <tr>
+                      <td>河南ZZ检测技术</td>
+                      <td>2</td>
+                      <td>1</td>
+                      <td><span class="tag red">0 胜 / 1 负</span></td>
+                      <td>93%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
