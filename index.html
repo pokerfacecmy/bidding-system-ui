@@ -1963,6 +1963,15 @@
 
         <!-- ② 数据收集 -->
         <section class="panel" id="panel-module-2">
+          <div class="meeting-note">
+            <span class="mn-icon">📌</span>
+            <div>
+              <span class="mn-tag">06-08 评审</span>ECP / ETP <strong>两个平台同时抓取</strong>；最终输出
+              <strong>4 张分类汇总表（伙伴省 ECP / 伙伴省 ETP / 外省 ECP / 外省 ETP）+ 1 张汇总总表</strong>，格式对齐汇总表模板；
+              支持<strong>按省份新增/关闭采集任务</strong>、超时手动重试、<strong>定时时间可配置</strong>、采集失败时<strong>手动导入补录</strong>。
+            </div>
+          </div>
+
           <div class="page-toolbar">
             <div class="page-toolbar-left">
               <div class="platform-tabs" id="platformTabs">
@@ -1970,9 +1979,10 @@
                 <button class="platform-tab" data-platform="ecp">ECP 国网电商</button>
                 <button class="platform-tab" data-platform="etp">ETP 电子采购</button>
               </div>
-              <span class="br-badge">BR-01/02 · BR-04/05 · BR-06</span>
+              <span class="br-badge">D-01 · D-04 · D-09</span>
             </div>
             <div>
+              <button class="btn btn-sm">📥 手动导入补录</button>
               <button class="btn btn-sm">立即补采</button>
               <button class="btn btn-primary btn-sm">手动触发采集</button>
             </div>
@@ -1990,9 +2000,9 @@
             <div class="kpi-card">
               <div class="kpi-icon blue">⏱</div>
               <div class="kpi-body">
-                <label>上次执行时间</label>
-                <div class="value" style="font-size:22px">23:50</div>
-                <div class="trend">定时任务 · 每日自动执行</div>
+                <label>定时执行时间</label>
+                <div class="value" style="font-size:22px">20:00</div>
+                <div class="trend">可配置 · 双平台同时跑数</div>
               </div>
             </div>
             <div class="kpi-card">
@@ -2013,91 +2023,166 @@
             </div>
           </div>
 
+          <!-- 核心交付物：4 张分类汇总表 + 1 张汇总总表 -->
+          <div class="card">
+            <div class="card-header" style="padding:0;border:none">
+              <div class="summary-tabs" id="summaryTabs">
+                <button class="summary-tab total active" data-summary="all">汇总总表 <span class="count-badge">152</span></button>
+                <button class="summary-tab" data-summary="p-ecp">伙伴省 · ECP <span class="count-badge">52</span></button>
+                <button class="summary-tab" data-summary="p-etp">伙伴省 · ETP <span class="count-badge">37</span></button>
+                <button class="summary-tab" data-summary="o-ecp">外省 · ECP <span class="count-badge">37</span></button>
+                <button class="summary-tab" data-summary="o-etp">外省 · ETP <span class="count-badge">26</span></button>
+              </div>
+              <span class="meta" style="padding-right:20px">D-01 · 报表格式对齐汇总表模板</span>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px">
+                <div style="font-size:13px;color:var(--text-secondary)">
+                  当前视图：<strong id="summaryTitle" style="color:var(--text)">汇总总表（全部 4 类合并）</strong>
+                  <span class="tag green" style="margin-left:8px">模板 v3 已对齐</span>
+                </div>
+                <div>
+                  <button class="btn btn-sm">⬇ 下载当前分类表</button>
+                  <button class="btn btn-primary btn-sm">⬇ 下载汇总总表（5 Sheet）</button>
+                </div>
+              </div>
+              <table class="data-table" style="font-size:12px" id="summaryTable">
+                <thead>
+                  <tr>
+                    <th>归属分类</th>
+                    <th>省份</th>
+                    <th>平台</th>
+                    <th>项目名称</th>
+                    <th>招标编号</th>
+                    <th>采购类型</th>
+                    <th>报名截止</th>
+                    <th>开标时间</th>
+                    <th>预算/限价</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-cat="p-ecp"><td><span class="tag blue">伙伴省·ECP</span></td><td>湖北</td><td>ECP</td><td>湖北省2026年配网工程服务采购</td><td>HB-ECP-2026-0612</td><td>服务</td><td>06-06 17:00</td><td>06-07 09:30</td><td>286.5 万</td></tr>
+                  <tr data-cat="p-ecp"><td><span class="tag blue">伙伴省·ECP</span></td><td>湖北</td><td>ECP</td><td>湖北宜昌线路巡检框架服务</td><td>HB-ECP-2026-0618</td><td>货物</td><td>06-09 16:00</td><td>06-14 10:00</td><td>120 万</td></tr>
+                  <tr data-cat="p-etp"><td><span class="tag green">伙伴省·ETP</span></td><td>湖南</td><td>ETP</td><td>湖南长沙变电运维技术服务</td><td>HN-ETP-2026-0233</td><td>服务</td><td>06-10 17:00</td><td>06-16 09:30</td><td>168 万</td></tr>
+                  <tr data-cat="o-ecp"><td><span class="tag orange">外省·ECP</span></td><td>河南</td><td>ECP</td><td>河南郑州电力设备检测服务</td><td>HN-ECP-2026-0189</td><td>服务</td><td>06-06 12:00</td><td>06-12 10:00</td><td>—</td></tr>
+                  <tr data-cat="o-ecp"><td><span class="tag orange">外省·ECP</span></td><td>重庆</td><td>ECP</td><td>重庆万州配网运维服务采购</td><td>CQ-ECP-2026-0412</td><td>服务</td><td>06-11 15:00</td><td>06-18 14:30</td><td>95 万</td></tr>
+                  <tr data-cat="o-etp"><td><span class="tag purple">外省·ETP</span></td><td>四川</td><td>ETP</td><td>四川成都变电站运维服务项目</td><td>SC-ETP-2026-0345</td><td>服务</td><td>06-08 16:00</td><td>06-09 14:00</td><td>158 万</td></tr>
+                  <tr data-cat="o-etp"><td><span class="tag purple">外省·ETP</span></td><td>江西</td><td>ETP</td><td>江西南昌配网运维框架服务</td><td>JX-ETP-2026-0156</td><td>服务</td><td>06-14 16:00</td><td>06-20 09:30</td><td>210 万</td></tr>
+                </tbody>
+              </table>
+              <div class="dedup-stats">
+                <span>伙伴省 ECP <strong>52</strong></span>
+                <span>伙伴省 ETP <strong>37</strong></span>
+                <span>外省 ECP <strong>37</strong></span>
+                <span>外省 ETP <strong>26</strong></span>
+                <span>汇总总表合计 <strong>152</strong></span>
+              </div>
+            </div>
+          </div>
+
           <div class="split-grid">
             <div class="card">
               <div class="card-header">
-                <h3>省份与采购类型配置</h3>
-                <span class="meta">BR-03 · 湖北全类型 · 其他省仅服务类</span>
+                <h3>省份与采集任务配置</h3>
+                <span class="meta">D-09 · 支持新增 / 关闭 / 超时重试</span>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="padding-top:12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                  <span style="font-size:12px;color:var(--text-muted)">湖北全类型 · 其他省仅服务类（可配置）</span>
+                  <button class="btn btn-sm btn-primary">＋ 新增省份任务</button>
+                </div>
                 <table class="data-table">
                   <thead>
                     <tr>
                       <th>省份</th>
-                      <th>重点区域</th>
                       <th>采购类型</th>
                       <th>ECP</th>
                       <th>ETP</th>
                       <th>状态</th>
+                      <th>操作</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td><strong>湖北省</strong></td>
-                      <td><span class="tag blue">重点</span></td>
-                      <td>货物 / 工程 / 服务</td>
+                      <td><strong>湖北省</strong> <span class="tag blue">重点</span></td>
+                      <td>货物/工程/服务</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-actions"><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
                       <td>湖南省</td>
-                      <td>—</td>
                       <td>仅服务类</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-actions"><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
                       <td>河南省</td>
-                      <td>—</td>
                       <td>仅服务类</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-actions"><button class="btn btn-sm">关闭</button></td>
                     </tr>
-                    <tr>
+                    <tr class="row-ineligible">
                       <td>四川省</td>
-                      <td>—</td>
                       <td>仅服务类</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag orange">部分失败</span></td>
                       <td><span class="status-dot orange"></span>ETP 超时</td>
+                      <td class="cell-actions"><button class="btn btn-sm btn-primary">重试</button><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
                       <td>安徽省</td>
-                      <td>—</td>
                       <td>仅服务类</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-actions"><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
                       <td>重庆市</td>
-                      <td>—</td>
                       <td>仅服务类</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-actions"><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
                       <td>江西省</td>
-                      <td>—</td>
                       <td>仅服务类</td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="tag green">启用</span></td>
                       <td><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-actions"><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
-                      <td>陕西省</td>
-                      <td>—</td>
+                      <td>陕西省 <span class="tag gray">已关闭</span></td>
                       <td>仅服务类</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="status-dot green"></span>运行中</td>
+                      <td><span class="tag gray">停用</span></td>
+                      <td><span class="tag gray">停用</span></td>
+                      <td><span class="status-dot"></span>已停止</td>
+                      <td class="cell-actions"><button class="btn btn-sm btn-primary">启用</button></td>
                     </tr>
                   </tbody>
                 </table>
+
+                <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+                  <div class="config-row">
+                    <div class="cr-label"><strong>定时采集时间</strong><small>D-04 · 双平台同时跑数并推送</small></div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <span class="tag blue">每日 20:00</span>
+                      <button class="btn btn-sm">修改</button>
+                    </div>
+                  </div>
+                  <div class="config-row">
+                    <div class="cr-label"><strong>超时异常处理</strong><small>省份超时自动重试 3 次，仍失败转人工</small></div>
+                    <span class="switch-pill" title="已开启"></span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -2143,6 +2228,39 @@
                   </div>
                 </li>
               </ul>
+            </div>
+          </div>
+
+          <!-- 手动导入补录（查缺补漏） -->
+          <div class="card">
+            <div class="card-header">
+              <h3>手动导入补录（查缺补漏）</h3>
+              <span class="meta">D-04 · 采集失败时人工补充数据，导入后反馈结果</span>
+            </div>
+            <div class="card-body">
+              <div class="split-grid" style="margin-bottom:0">
+                <div class="dropzone">
+                  <span class="dz-icon">📤</span>
+                  将 <strong>Excel / 公告附件</strong> 拖拽到此处，或
+                  <strong>点击选择文件</strong> 导入<br>
+                  <span style="font-size:12px;color:var(--text-muted)">支持 .xlsx / .csv / .zip · 自动按省份-平台归类入对应汇总表</span>
+                  <div style="margin-top:12px"><button class="btn btn-primary btn-sm">选择文件导入</button></div>
+                </div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;margin-bottom:8px">最近导入结果反馈</div>
+                  <table class="data-table" style="font-size:12px">
+                    <thead>
+                      <tr><th>文件</th><th>归类</th><th>新增/重复</th><th>结果</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>四川补录_0604.xlsx</td><td>外省·ETP</td><td>+3 / 0</td><td><span class="tag green">成功</span></td></tr>
+                      <tr><td>河南手工整理.csv</td><td>外省·ECP</td><td>+5 / 2</td><td><span class="tag orange">部分重复</span></td></tr>
+                      <tr><td>湖北附件包.zip</td><td>伙伴省·ECP</td><td>+1 / 0</td><td><span class="tag green">成功</span></td></tr>
+                      <tr><td>未知模板.xlsx</td><td>—</td><td>0 / 0</td><td><span class="tag red">字段不匹配</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -3202,6 +3320,31 @@
             } else {
               row.style.display = row.dataset.platform === platform ? '' : 'none';
             }
+          });
+        });
+      }
+
+      /* 汇总表分类切换（4 表 + 总表） */
+      var summaryTabs = document.getElementById('summaryTabs');
+      if (summaryTabs) {
+        var summaryTitles = {
+          'all': '汇总总表（全部 4 类合并）',
+          'p-ecp': '伙伴省 · ECP 分类汇总表',
+          'p-etp': '伙伴省 · ETP 分类汇总表',
+          'o-ecp': '外省 · ECP 分类汇总表',
+          'o-etp': '外省 · ETP 分类汇总表'
+        };
+        summaryTabs.addEventListener('click', function (e) {
+          var tab = e.target.closest('.summary-tab');
+          if (!tab) return;
+          summaryTabs.querySelectorAll('.summary-tab').forEach(function (t) { t.classList.remove('active', 'total'); });
+          tab.classList.add('active');
+          var cat = tab.dataset.summary;
+          if (cat === 'all') tab.classList.add('total');
+          var titleEl = document.getElementById('summaryTitle');
+          if (titleEl) titleEl.textContent = summaryTitles[cat] || '';
+          document.querySelectorAll('#summaryTable tbody tr').forEach(function (row) {
+            row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
           });
         });
       }
