@@ -2607,11 +2607,21 @@
         </section>
         <!-- ④ 整理提取 -->
         <section class="panel" id="panel-module-4">
+          <div class="meeting-note">
+            <span class="mn-icon">📌</span>
+            <div>
+              <span class="mn-tag">06-08 评审</span>前期测试阶段建立<strong>人工复核机制</strong>：
+              「待校验」<strong>仅指系统规则校验未通过</strong>的项目，<strong>已通过 / 已确认的项目也保留校验记录</strong>；
+              修正针对<strong>已抓取数据</strong>，修正后<strong>实时同步</strong>到列表与提取结果；支持<strong>重新下载 / 更新文件</strong>。
+            </div>
+          </div>
+
           <div class="page-toolbar">
             <div class="page-toolbar-left">
-              <span class="br-badge">BR-10/11 · BR-12 · BR-13 · BR-14/15</span>
+              <span class="br-badge">D-03 人工复核 · D-08 重新下载/更新</span>
             </div>
             <div>
+              <button class="btn btn-sm">🔄 重新下载/更新文件</button>
               <button class="btn btn-sm">批量重新提取</button>
               <button class="btn btn-primary btn-sm">📊 生成 Excel 报表</button>
             </div>
@@ -2637,9 +2647,9 @@
             <div class="kpi-card">
               <div class="kpi-icon orange">✏️</div>
               <div class="kpi-body">
-                <label>待人工校验</label>
+                <label>待校验（规则未通过）</label>
                 <div class="value">18</div>
-                <div class="trend">低置信度 / 字段缺失</div>
+                <div class="trend">字段缺失 / 时间为空</div>
               </div>
             </div>
             <div class="kpi-card">
@@ -2743,11 +2753,11 @@
           <div class="card">
             <div class="card-header" style="padding:0;border:none">
               <div class="verify-tabs">
-                <button class="verify-tab active" data-verify="pending">待校验 <span class="count-badge">18</span></button>
+                <button class="verify-tab active" data-verify="pending">待校验（规则未通过）<span class="count-badge">18</span></button>
                 <button class="verify-tab" data-verify="confirmed">已确认 <span class="count-badge">134</span></button>
                 <button class="verify-tab" data-verify="all">全部 <span class="count-badge">152</span></button>
               </div>
-              <span class="meta" style="padding-right:20px">OCR + LLM 提取 · BR-12/13</span>
+              <span class="meta" style="padding-right:20px">全部项目均保留校验记录 · 修正后实时同步</span>
             </div>
             <div class="card-body">
               <table class="data-table">
@@ -2755,85 +2765,86 @@
                   <tr>
                     <th>项目名称</th>
                     <th>采购人</th>
-                    <th>代理机构</th>
                     <th>报名截止</th>
                     <th>开标时间</th>
                     <th>招标编号</th>
-                    <th>分标/包号</th>
                     <th>资质要求</th>
                     <th>预算/限价</th>
                     <th>置信度</th>
+                    <th>校验记录</th>
                     <th>操作</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>湖北省2026年配网工程服务采购</td>
-                    <td>国网湖北省电力有限公司</td>
-                    <td>湖北招标有限公司</td>
-                    <td>06-06 17:00</td>
-                    <td>06-07 09:30</td>
-                    <td>HB-ECP-2026-0612</td>
-                    <td>分标01 / 包1</td>
-                    <td>电力工程施工总承包三级及以上</td>
-                    <td>286.5 万</td>
-                    <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill high"></span></span>96%</span></td>
-                    <td class="cell-actions"><button class="btn btn-sm btn-primary">确认</button><button class="btn btn-sm">修正</button></td>
-                  </tr>
-                  <tr>
-                    <td>四川成都变电站运维服务项目</td>
-                    <td>国网四川省电力公司</td>
-                    <td>—</td>
-                    <td>06-08 16:00</td>
-                    <td>06-09 14:00</td>
-                    <td>SC-ETP-2026-0345</td>
-                    <td>分标02 / 包3</td>
-                    <td>承装(修、试)电力设施许可</td>
-                    <td>158 万</td>
-                    <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill high"></span></span>92%</span></td>
-                    <td class="cell-actions"><button class="btn btn-sm btn-primary">确认</button><button class="btn btn-sm">修正</button></td>
+                    <td>安徽合肥电网智能化改造咨询</td>
+                    <td>国网安徽省电力有限公司</td>
+                    <td><span class="tag red">缺失</span></td>
+                    <td><span class="tag red">缺失</span></td>
+                    <td>AH-ETP-2026-0278</td>
+                    <td>工程咨询甲级</td>
+                    <td>420 万</td>
+                    <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill low"></span></span>45%</span></td>
+                    <td><span class="tag red">规则未通过</span><br><small style="color:var(--text-muted)">报名/开标时间为空</small></td>
+                    <td class="cell-actions"><button class="btn btn-sm btn-primary">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
                   <tr>
                     <td>河南郑州电力设备检测服务</td>
                     <td>国网河南省电力公司</td>
-                    <td>河南电力招标中心</td>
                     <td>06-06 12:00</td>
                     <td>06-12 10:00</td>
                     <td>HN-ECP-2026-0189</td>
-                    <td>— / 包2</td>
                     <td>CMA 资质 · CNAS 认可</td>
                     <td>—</td>
                     <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill mid"></span></span>72%</span></td>
-                    <td class="cell-actions"><button class="btn btn-sm btn-primary">确认</button><button class="btn btn-sm">修正</button></td>
+                    <td><span class="tag orange">规则未通过</span><br><small style="color:var(--text-muted)">预算/限价缺失</small></td>
+                    <td class="cell-actions"><button class="btn btn-sm btn-primary">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
                   <tr>
-                    <td>安徽合肥电网智能化改造咨询</td>
-                    <td>国网安徽省电力有限公司</td>
-                    <td>安徽招标集团</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td>AH-ETP-2026-0278</td>
-                    <td>分标01 / 包1</td>
-                    <td>工程咨询甲级</td>
-                    <td>420 万</td>
-                    <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill low"></span></span>45%</span></td>
-                    <td class="cell-actions"><button class="btn btn-sm btn-primary">确认</button><button class="btn btn-sm">修正</button></td>
+                    <td>湖北省2026年配网工程服务采购</td>
+                    <td>国网湖北省电力有限公司</td>
+                    <td>06-06 17:00</td>
+                    <td>06-07 09:30</td>
+                    <td>HB-ECP-2026-0612</td>
+                    <td>电力工程施工总承包三级及以上</td>
+                    <td>286.5 万</td>
+                    <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill high"></span></span>96%</span></td>
+                    <td><span class="tag green">已确认</span><br><small style="color:var(--text-muted)">张专员 06-05 复核</small></td>
+                    <td class="cell-actions"><button class="btn btn-sm">修正并同步</button><button class="btn btn-sm">记录</button></td>
+                  </tr>
+                  <tr>
+                    <td>四川成都变电站运维服务项目</td>
+                    <td>国网四川省电力公司</td>
+                    <td>06-08 16:00</td>
+                    <td>06-09 14:00</td>
+                    <td>SC-ETP-2026-0345</td>
+                    <td>承装(修、试)电力设施许可</td>
+                    <td>158 万</td>
+                    <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill high"></span></span>92%</span></td>
+                    <td><span class="tag green">已确认</span><br><small style="color:var(--text-muted)">规则通过 · 已抽检</small></td>
+                    <td class="cell-actions"><button class="btn btn-sm">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
                   <tr>
                     <td>重庆万州配网运维服务采购</td>
                     <td>国网重庆市电力公司</td>
-                    <td>重庆电力招标公司</td>
                     <td>06-11 15:00</td>
                     <td>06-18 14:30</td>
                     <td>CQ-ECP-2026-0412</td>
-                    <td>分标03 / 包1</td>
                     <td>劳务分包资质</td>
                     <td>95 万</td>
                     <td><span class="field-confidence"><span class="conf-bar"><span class="conf-fill high"></span></span>89%</span></td>
-                    <td class="cell-actions"><button class="btn btn-sm btn-primary">确认</button><button class="btn btn-sm">修正</button></td>
+                    <td><span class="tag green">规则通过</span><br><small style="color:var(--text-muted)">待抽检复核</small></td>
+                    <td class="cell-actions"><button class="btn btn-sm">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
                 </tbody>
               </table>
+              <div class="dedup-stats">
+                <span>规则未通过（待校验）<strong>18</strong></span>
+                <span>规则通过 <strong>134</strong></span>
+                <span>已人工确认 <strong>134</strong></span>
+                <span>已抽检复核 <strong>56</strong></span>
+                <span style="color:var(--text-muted)">修正后实时同步至列表 / 提取结果 / 汇总表</span>
+              </div>
             </div>
           </div>
         </section>
