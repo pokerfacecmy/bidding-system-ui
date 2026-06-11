@@ -985,6 +985,7 @@
     }
 
     .progress-fill {
+      display: block;
       height: 100%;
       border-radius: 3px;
       background: linear-gradient(90deg, var(--primary), var(--primary-light));
@@ -1643,7 +1644,7 @@
     .score-bars { display: flex; flex-direction: column; gap: 14px; }
     .score-bar-row { display: grid; grid-template-columns: 90px 1fr 60px; gap: 12px; align-items: center; font-size: 13px; }
     .score-bar-track { height: 10px; background: var(--bg); border-radius: 5px; overflow: hidden; }
-    .score-bar-fill { height: 100%; border-radius: 5px; background: var(--primary); }
+    .score-bar-fill { display: block; height: 100%; border-radius: 5px; background: var(--primary); }
     .score-bar-fill.tech { background: var(--info); }
     .score-bar-fill.biz { background: var(--success); }
     .score-bar-fill.price { background: var(--warning); }
@@ -4304,7 +4305,7 @@
                   <span class="tk-name">第三章 技术方案<small>项目理解 / 施工组织</small></span>
                   <span class="task-owner"><span class="owner-dot">张</span>张工</span>
                   <span><span class="tag red">06-09 截止</span></span>
-                  <span class="progress-wrap"><span class="progress-bar"><span class="progress-fill" style="width:55%;background:var(--warning)"></span></span><span class="progress-text">55%</span></span>
+                  <span class="progress-wrap"><span class="progress-bar"><span class="progress-fill warning" style="width:55%"></span></span><span class="progress-text">55%</span></span>
                 </li>
                 <li class="task-row">
                   <span class="tk-name">第二章 商务部分<small>资质/财务/业绩组合</small></span>
@@ -4930,7 +4931,209 @@
             </div>
           </div>
         </section>
-        <section class="panel" id="panel-module-13" data-module="⑬ 投标文件审核" data-desc="初审/终审流转，退回修改，编制工作量与退改统计。"></section>
+        <section class="panel" id="panel-module-13">
+          <div class="meeting-note">
+            <span class="mn-icon">✅</span>
+            <div>
+              <span class="mn-tag">第二期 · B8</span><span class="phase-badge p2" style="margin-left:0">投标作业</span>
+              标书生成后推送审核负责人并消息提醒，审核分<strong>初审、终审两环节</strong>；任一环节不通过可<strong>退回投标专员修改</strong>后重新提交；
+              支持<strong>编制工作量与退改统计</strong>（BR-45～47）。
+            </div>
+          </div>
+
+          <ul class="stage-flow">
+            <li class="stage-step done"><span class="ss-no">✓</span> 投标文件生成</li>
+            <li class="ss-arrow">→</li>
+            <li class="stage-step active"><span class="ss-no">8</span> 投标文件审核</li>
+            <li class="ss-arrow">→</li>
+            <li class="stage-step"><span class="ss-no">9</span> 归档</li>
+          </ul>
+
+          <div class="page-toolbar">
+            <div class="page-toolbar-left">
+              <span class="br-badge">BR-45～47 · 审核流转</span>
+              <span class="tag blue">湖北省2026年配网工程服务采购</span>
+            </div>
+            <div>
+              <button class="btn btn-sm">↩ 退回修改</button>
+              <button class="btn btn-primary btn-sm">✓ 终审通过并定稿</button>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue">📋</div>
+              <div class="kpi-body">
+                <label>待审核</label>
+                <div class="value">4</div>
+                <div class="trend">初审 2 · 终审 2</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green">✅</div>
+              <div class="kpi-body">
+                <label>本月已定稿</label>
+                <div class="value">9</div>
+                <div class="trend">通过率 75%</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon orange">↩</div>
+              <div class="kpi-body">
+                <label>退改次数</label>
+                <div class="value">7</div>
+                <div class="trend down">平均 0.8 次/项目</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon red">⏰</div>
+              <div class="kpi-body">
+                <label>临近开标</label>
+                <div class="value">2</div>
+                <div class="trend down">须 24h 内完成审核</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-grid-3-2" style="display:grid;grid-template-columns:1fr 1.4fr;gap:24px;margin-bottom:24px">
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <h3>审核流转（当前项目）</h3>
+                <span class="meta">BR-45 · 初审 → 终审</span>
+              </div>
+              <div class="card-body">
+                <ul class="review-flow">
+                  <li class="done">
+                    <div class="rf-title">提交审核</div>
+                    <div class="rf-meta">张专员 提交完整投标文件（148 页）</div>
+                    <div class="rf-time">06-09 14:20</div>
+                  </li>
+                  <li class="reject">
+                    <div class="rf-title">初审 · 退回 <span class="tag red">不通过</span></div>
+                    <div class="rf-meta">李主管：报价大写金额漏字、驻场人数不足，退回修改</div>
+                    <div class="rf-time">06-09 16:05 · 退改第 1 次</div>
+                  </li>
+                  <li class="done">
+                    <div class="rf-title">重新提交</div>
+                    <div class="rf-meta">张专员 修正后重新提交</div>
+                    <div class="rf-time">06-10 09:30</div>
+                  </li>
+                  <li class="done">
+                    <div class="rf-title">初审 · 通过 <span class="tag green">通过</span></div>
+                    <div class="rf-meta">李主管：问题已修正，转终审</div>
+                    <div class="rf-time">06-10 10:15</div>
+                  </li>
+                  <li class="active">
+                    <div class="rf-title">终审 · 进行中 <span class="tag orange">待处理</span></div>
+                    <div class="rf-meta">王部长：审核中（含双层 PDF 定稿确认）</div>
+                    <div class="rf-time">距开标 1 天 · 请尽快</div>
+                  </li>
+                  <li>
+                    <div class="rf-title">定稿归档</div>
+                    <div class="rf-meta">终审通过后自动归档并回流资料库</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <h3>审核任务列表</h3>
+                <span class="meta">推送提醒 · 初审/终审分流</span>
+              </div>
+              <div class="card-body">
+                <table class="data-table">
+                  <thead>
+                    <tr><th>项目</th><th>环节</th><th>审核人</th><th>退改</th><th>剩余时间</th><th>操作</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="urgent">
+                      <td>湖北配网工程服务</td><td><span class="tag orange">终审</span></td><td>王部长</td><td>1 次</td>
+                      <td><span class="tag red">1 天</span></td>
+                      <td><div class="cell-actions"><button class="btn btn-sm btn-primary">审核</button></div></td>
+                    </tr>
+                    <tr class="urgent">
+                      <td>河南电力设备检测</td><td><span class="tag blue">初审</span></td><td>李主管</td><td>0 次</td>
+                      <td><span class="tag red">22 小时</span></td>
+                      <td><div class="cell-actions"><button class="btn btn-sm btn-primary">审核</button></div></td>
+                    </tr>
+                    <tr>
+                      <td>四川变电站运维</td><td><span class="tag orange">终审</span></td><td>王部长</td><td>2 次</td>
+                      <td>3 天</td>
+                      <td><div class="cell-actions"><button class="btn btn-sm">审核</button></div></td>
+                    </tr>
+                    <tr>
+                      <td>安徽电网智能化咨询</td><td><span class="tag blue">初审</span></td><td>李主管</td><td>0 次</td>
+                      <td>5 天</td>
+                      <td><div class="cell-actions"><button class="btn btn-sm">审核</button></div></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="dedup-stats">
+                  <span style="color:var(--text-muted)">退回修改将记录退改原因与次数（BR-46/47），计入工作量统计</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <h3>编制工作量统计（BR-47）</h3>
+                <span class="meta">近 30 天 · 按投标专员</span>
+              </div>
+              <div class="card-body">
+                <div class="h-bar-chart">
+                  <div class="h-bar-row">
+                    <span class="h-bar-label" style="width:48px">张专员</span>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width:92%"></div></div>
+                    <span class="h-bar-value">11 份</span>
+                  </div>
+                  <div class="h-bar-row">
+                    <span class="h-bar-label" style="width:48px">李专员</span>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width:75%"></div></div>
+                    <span class="h-bar-value">9 份</span>
+                  </div>
+                  <div class="h-bar-row">
+                    <span class="h-bar-label" style="width:48px">王专员</span>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width:50%"></div></div>
+                    <span class="h-bar-value">6 份</span>
+                  </div>
+                  <div class="h-bar-row">
+                    <span class="h-bar-label" style="width:48px">赵专员</span>
+                    <div class="h-bar-track"><div class="h-bar-fill" style="width:33%"></div></div>
+                    <span class="h-bar-value">4 份</span>
+                  </div>
+                </div>
+                <div class="stat-row">
+                  <div class="stat-box"><div class="num">30</div><div class="lbl">编制总份数</div></div>
+                  <div class="stat-box"><div class="num">3.2天</div><div class="lbl">平均编制周期</div></div>
+                  <div class="stat-box"><div class="num">148</div><div class="lbl">平均页数</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <h3>退改统计与原因分布</h3>
+                <span class="meta">BR-47 · 持续改进依据</span>
+              </div>
+              <div class="card-body">
+                <table class="data-table">
+                  <thead><tr><th>退改原因</th><th>次数</th><th>占比</th><th>环节</th></tr></thead>
+                  <tbody>
+                    <tr><td>报价/算术错误</td><td>3</td><td>43%</td><td><span class="tag blue">初审</span></td></tr>
+                    <tr><td>响应性/废标风险</td><td>2</td><td>29%</td><td><span class="tag blue">初审</span></td></tr>
+                    <tr><td>一致性问题</td><td>1</td><td>14%</td><td><span class="tag orange">终审</span></td></tr>
+                    <tr><td>格式排版</td><td>1</td><td>14%</td><td><span class="tag orange">终审</span></td></tr>
+                  </tbody>
+                </table>
+                <div class="dedup-stats">
+                  <span>合计退改：<strong>7 次</strong></span>
+                  <span style="color:var(--text-muted)">报价类退改最多，建议在模块⑩前置加强报价复核</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section class="panel" id="panel-module-14">
           <div class="meeting-note">
             <span class="mn-icon">⭐</span>
@@ -5128,7 +5331,7 @@
         'module-14': '📁', 'module-15': '⚙️', 'module-16': '🔒'
       };
 
-      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-7', 'module-8', 'module-9', 'module-10', 'module-11', 'module-12', 'module-14'];
+      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-7', 'module-8', 'module-9', 'module-10', 'module-11', 'module-12', 'module-13', 'module-14'];
 
       document.querySelectorAll('.panel[id^="panel-module"]').forEach(function (panel) {
         var id = panel.id.replace('panel-', '');
