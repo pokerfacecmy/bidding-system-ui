@@ -1441,6 +1441,218 @@
     @media (max-width: 1400px) {
       .qual-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ============================================================
+       第二期 · 投标作业（模块 ⑧～⑬）专用样式
+       ============================================================ */
+
+    /* 流程步骤条（投标作业主线 B3→B8） */
+    .stage-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .stage-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .stage-step .ss-no {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--bg); color: var(--text-secondary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 600; flex-shrink: 0;
+    }
+    .stage-step.done .ss-no { background: var(--success); color: #fff; }
+    .stage-step.active { color: var(--primary); font-weight: 600; }
+    .stage-step.active .ss-no { background: var(--primary); color: #fff; }
+    .stage-step .ss-arrow { color: var(--text-muted); margin: 0 2px; }
+
+    /* 双栏解析布局：左文档 / 右提取 */
+    .parse-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .doc-preview {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #F8FAFC;
+      padding: 16px;
+      min-height: 360px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .doc-page {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+    }
+    .doc-page h6 { font-size: 13px; color: var(--text); margin-bottom: 10px; }
+    .doc-page p { margin: 6px 0; }
+    .doc-highlight { background: #FEF3C7; color: #92400E; padding: 0 3px; border-radius: 3px; cursor: pointer; }
+    .doc-highlight.danger { background: #FEE2E2; color: #991B1B; }
+
+    /* 提取字段卡片 */
+    .extract-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      background: var(--surface);
+    }
+    .extract-field .ef-label { font-size: 12px; color: var(--text-secondary); min-width: 92px; flex-shrink: 0; }
+    .extract-field .ef-value { font-size: 13px; font-weight: 600; color: var(--text); flex: 1; }
+    .extract-field .ef-value small { display:block; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+
+    /* 核查清单 / 检查项 */
+    .checklist { list-style: none; padding: 0; }
+    .check-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-mark {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 12px;
+    }
+    .check-mark.pass { background: var(--success-bg); color: var(--success); }
+    .check-mark.fail { background: var(--danger-bg); color: var(--danger); }
+    .check-mark.warn { background: var(--warning-bg); color: var(--warning); }
+    .check-mark.todo { background: var(--bg); color: var(--text-muted); }
+    .check-body { flex: 1; }
+    .check-body .ci-title { font-size: 13px; font-weight: 600; color: var(--text); }
+    .check-body .ci-desc { font-size: 12px; color: var(--text-secondary); margin-top: 3px; line-height: 1.6; }
+    .check-body .ci-quote { font-size: 12px; color: var(--text-muted); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--border); }
+
+    /* 废标词库 chips */
+    .kw-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .kw-chip {
+      font-size: 12px; padding: 4px 10px; border-radius: 14px;
+      background: var(--danger-bg); color: var(--danger); border: 1px solid #FECACA;
+    }
+    .kw-chip.neutral { background: var(--bg); color: var(--text-secondary); border-color: var(--border); }
+
+    /* 大纲树 */
+    .outline-tree { list-style: none; padding: 0; font-size: 13px; }
+    .outline-tree li { padding: 8px 0; border-bottom: 1px dashed var(--border); }
+    .outline-tree li:last-child { border-bottom: none; }
+    .outline-tree .ol-1 { font-weight: 600; color: var(--text); }
+    .outline-tree .ol-2 { padding-left: 22px; color: var(--text-secondary); }
+    .outline-tree .ol-3 { padding-left: 44px; color: var(--text-muted); font-size: 12px; }
+    .outline-tree .ol-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+
+    /* 任务看板 / 倒排 */
+    .task-list { list-style: none; padding: 0; }
+    .task-row {
+      display: grid;
+      grid-template-columns: 1.6fr 0.7fr 0.8fr 1.2fr;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .task-row:last-child { border-bottom: none; }
+    .task-row .tk-name { font-weight: 600; color: var(--text); }
+    .task-row .tk-name small { display: block; font-weight: 400; color: var(--text-muted); font-size: 11px; margin-top: 2px; }
+    .task-owner { display: inline-flex; align-items: center; gap: 6px; }
+    .owner-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+
+    /* 模板卡片网格（投标文件生成） */
+    .template-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .template-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+    }
+    .template-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-sm); }
+    .template-card.selected { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(30,64,175,0.15); }
+    .template-card .tpl-thumb {
+      height: 90px; border-radius: 6px; margin-bottom: 12px;
+      background: linear-gradient(135deg, #EEF2FF, #DBEAFE);
+      display: flex; align-items: center; justify-content: center; font-size: 30px;
+    }
+    .template-card h5 { font-size: 13px; color: var(--text); }
+    .template-card p { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .template-card .tpl-check {
+      position: absolute; top: 10px; right: 10px; width: 20px; height: 20px;
+      border-radius: 50%; background: var(--primary); color: #fff; font-size: 11px;
+      display: none; align-items: center; justify-content: center;
+    }
+    .template-card.selected .tpl-check { display: flex; }
+
+    /* 生成流水线步骤 */
+    .gen-pipeline { list-style: none; padding: 0; }
+    .gen-step {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+    }
+    .gen-step:last-child { border-bottom: none; }
+    .gen-step .gs-icon {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 12px;
+    }
+    .gen-step.done .gs-icon { background: var(--success-bg); color: var(--success); }
+    .gen-step.running .gs-icon { background: var(--info-bg); color: var(--info); }
+    .gen-step.wait .gs-icon { background: var(--bg); color: var(--text-muted); }
+    .gen-step .gs-body { flex: 1; }
+    .gen-step .gs-body small { color: var(--text-muted); font-size: 11px; }
+
+    /* 审核流转步骤器（纵向） */
+    .review-flow { list-style: none; padding: 0; position: relative; padding-left: 26px; }
+    .review-flow::before { content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+    .review-flow li { position: relative; padding: 0 0 18px 12px; }
+    .review-flow li::before {
+      content: ""; position: absolute; left: -24px; top: 2px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--surface); border: 3px solid var(--border);
+    }
+    .review-flow li.done::before { background: var(--success); border-color: var(--success); }
+    .review-flow li.active::before { background: var(--primary); border-color: var(--primary); }
+    .review-flow li.reject::before { background: var(--danger); border-color: var(--danger); }
+    .rf-title { font-size: 13px; font-weight: 600; color: var(--text); }
+    .rf-meta { font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
+    .rf-time { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* 评分条形 */
+    .score-bars { display: flex; flex-direction: column; gap: 14px; }
+    .score-bar-row { display: grid; grid-template-columns: 90px 1fr 60px; gap: 12px; align-items: center; font-size: 13px; }
+    .score-bar-track { height: 10px; background: var(--bg); border-radius: 5px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 5px; background: var(--primary); }
+    .score-bar-fill.tech { background: var(--info); }
+    .score-bar-fill.biz { background: var(--success); }
+    .score-bar-fill.price { background: var(--warning); }
+    .score-bar-row .sb-val { text-align: right; font-weight: 600; color: var(--text); }
+
+    @media (max-width: 1400px) {
+      .parse-layout { grid-template-columns: 1fr; }
+      .template-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -3878,6 +4090,12 @@
         'module-5': '汇总表为核心交付 · 竞争对手两步分析 · 重标编号对接编标处 · 金额比对基于上传投标文件',
         'module-6': '推送摘要与 4 张汇总表对齐 · 分省份统计 · 管理员按角色配置 · 手机看摘要/PC 看详情',
         'module-7': '批量导入投标清单 · 工作记录与关键节点预警 · 可投项目原始链接（第二期框架）',
+        'module-8': '多格式解析（PDF/Word/Excel）· 核心信息提取 · 废标词库与清单 · 评分细则拆解为得分点',
+        'module-9': '大纲一键生成 · 任务倒排预警 · 商务组合与业绩匹配 · 技术方案与偏离表生成',
+        'module-10': '废标响应性核查 · 一致性检查 · 报价复核 · 质量自检 · 原创性比对 · 提交前文件自检',
+        'module-11': '得分点匹配定位（章节+页码）· 报价分测算与建议区间 · 综合得分与中标概率预估',
+        'module-12': '一键生成商务/技术/报价文件 · 多模板（≥5）· 定稿后双层 PDF 转换',
+        'module-13': '初审/终审两环节流转 · 退回修改与原因记录 · 编制工作量与退改统计',
         'module-14': '业绩/合同/发票/资质统一维护 · 导入导出 · 版本管理 · 角色权限与溯源'
       };
 
