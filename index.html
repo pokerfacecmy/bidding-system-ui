@@ -1385,9 +1385,71 @@
       padding: 4px 10px;
     }
 
-    /* 系统管理运维：双栏表格在扣除侧栏后内容区偏窄时改为纵向堆叠 */
+    /* 系统管理运维 · KPI 四列等宽（避免长文案撑破列宽） */
+    #panel-module-15 .kpi-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    #panel-module-15 .kpi-card,
+    #panel-module-15 .kpi-body {
+      min-width: 0;
+    }
+
+    #panel-module-15 .kpi-body .trend {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 抓取规则 | 账号管理：同行卡片等高，内容顶对齐、底栏贴底 */
     #panel-module-15 .admin-panels-grid {
-      align-items: start;
+      align-items: stretch;
+    }
+
+    #panel-module-15 .admin-panels-grid > .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-bottom: 0;
+    }
+
+    #panel-module-15 .admin-panels-grid > .card > .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    #panel-module-15 .admin-panels-grid .table-scroll {
+      flex: 0 0 auto;
+    }
+
+    #panel-module-15 .admin-rules-config {
+      flex: 0 0 auto;
+      margin-top: auto;
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    #panel-module-15 .admin-rules-config .config-row {
+      padding: 10px 0;
+    }
+
+    #panel-module-15 .admin-rules-config .config-row .cr-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    #panel-module-15 .admin-panel-card-foot {
+      flex: 0 0 auto;
+      margin-top: auto;
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* 断点续传 / 历史补录：同行卡片等高，底部按钮贴齐 */
@@ -1423,11 +1485,29 @@
     }
 
     #panel-module-15 .data-table.admin-rules-table {
-      min-width: 720px;
+      width: 100%;
+      font-size: 12px;
+    }
+
+    #panel-module-15 .data-table.admin-rules-table th,
+    #panel-module-15 .data-table.admin-rules-table td {
+      padding: 10px 12px;
+    }
+
+    #panel-module-15 .data-table.admin-rules-table th.col-province,
+    #panel-module-15 .data-table.admin-rules-table td.cell-province,
+    #panel-module-15 .data-table.admin-rules-table th.col-tag,
+    #panel-module-15 .data-table.admin-rules-table td.cell-tag,
+    #panel-module-15 .data-table.admin-rules-table th.col-status,
+    #panel-module-15 .data-table.admin-rules-table td.cell-status,
+    #panel-module-15 .data-table.admin-rules-table th.col-retry,
+    #panel-module-15 .data-table.admin-rules-table td.cell-retry {
+      white-space: nowrap;
     }
 
     #panel-module-15 .data-table.admin-account-table {
-      min-width: 560px;
+      min-width: 0;
+      width: 100%;
     }
 
     #panel-module-15 .data-table.admin-account-table th.col-status,
@@ -5641,88 +5721,88 @@
                 <table class="data-table admin-rules-table">
                   <thead>
                     <tr>
-                      <th>省份</th>
-                      <th>业务范围</th>
-                      <th>ECP</th>
-                      <th>ETP</th>
-                      <th>状态</th>
-                      <th>重试</th>
+                      <th class="col-province">省份</th>
+                      <th class="col-scope">业务范围</th>
+                      <th class="col-tag">ECP</th>
+                      <th class="col-tag">ETP</th>
+                      <th class="col-status">状态</th>
+                      <th class="col-retry">重试</th>
                       <th class="col-actions">操作</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>湖北省</td>
-                      <td>服务类 + 物资类</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="status-dot green"></span>运行中</td>
-                      <td>3 次 / 5min</td>
+                      <td class="cell-province">湖北省</td>
+                      <td class="cell-scope">服务类 + 物资类</td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-status"><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-retry">3 次 / 5min</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
-                      <td>湖南省</td>
-                      <td>仅服务类</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="status-dot green"></span>运行中</td>
-                      <td>3 次 / 5min</td>
+                      <td class="cell-province">湖南省</td>
+                      <td class="cell-scope">仅服务类</td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-status"><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-retry">3 次 / 5min</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
-                      <td>四川省</td>
-                      <td>仅服务类</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="tag orange">慢速</span></td>
-                      <td><span class="status-dot orange"></span>重试中</td>
-                      <td>5 次 / 10min</td>
+                      <td class="cell-province">四川省</td>
+                      <td class="cell-scope">仅服务类</td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-tag"><span class="tag orange">慢速</span></td>
+                      <td class="cell-status"><span class="status-dot orange"></span>重试中</td>
+                      <td class="cell-retry">5 次 / 10min</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm btn-primary">重试</button></td>
                     </tr>
                     <tr>
-                      <td>重庆市</td>
-                      <td>仅服务类</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="status-dot green"></span>运行中</td>
-                      <td>3 次 / 5min</td>
+                      <td class="cell-province">重庆市</td>
+                      <td class="cell-scope">仅服务类</td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-status"><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-retry">3 次 / 5min</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
-                      <td>江西省</td>
-                      <td>仅服务类</td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="tag green">启用</span></td>
-                      <td><span class="status-dot green"></span>运行中</td>
-                      <td>3 次 / 5min</td>
+                      <td class="cell-province">江西省</td>
+                      <td class="cell-scope">仅服务类</td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-tag"><span class="tag green">启用</span></td>
+                      <td class="cell-status"><span class="status-dot green"></span>运行中</td>
+                      <td class="cell-retry">3 次 / 5min</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">关闭</button></td>
                     </tr>
                     <tr>
-                      <td>陕西省 <span class="tag gray">已关闭</span></td>
-                      <td>仅服务类</td>
-                      <td><span class="tag gray">停用</span></td>
-                      <td><span class="tag gray">停用</span></td>
-                      <td><span class="status-dot"></span>已停止</td>
-                      <td>—</td>
+                      <td class="cell-province">陕西省 <span class="tag gray">已关闭</span></td>
+                      <td class="cell-scope">仅服务类</td>
+                      <td class="cell-tag"><span class="tag gray">停用</span></td>
+                      <td class="cell-tag"><span class="tag gray">停用</span></td>
+                      <td class="cell-status"><span class="status-dot"></span>已停止</td>
+                      <td class="cell-retry">—</td>
                       <td class="cell-actions"><button class="btn btn-sm btn-primary">启用</button></td>
                     </tr>
                   </tbody>
                 </table>
                 </div>
-                <div style="margin:0 20px;padding:12px 0;border-top:1px solid var(--border)">
+                <div class="admin-rules-config">
                   <div class="config-row">
                     <div class="cr-label"><strong>定时采集时间</strong><small>与模块② 数据收集联动</small></div>
-                    <div style="display:flex;align-items:center;gap:8px">
+                    <div class="cr-value">
                       <span class="tag blue">每日 20:00</span>
                       <button class="btn btn-sm">修改</button>
                     </div>
                   </div>
                   <div class="config-row">
                     <div class="cr-label"><strong>失败自动补采</strong><small>超时省份自动重试，仍失败转人工补录</small></div>
-                    <span class="switch-pill" title="已开启"></span>
+                    <div class="cr-value"><span class="switch-pill" title="已开启"></span></div>
                   </div>
                   <div class="config-row">
                     <div class="cr-label"><strong>去重策略</strong><small>同一项目编号 24h 内不重复入库</small></div>
-                    <span class="tag outline">项目编号 + 包号</span>
+                    <div class="cr-value"><span class="tag outline">项目编号 + 包号</span></div>
                   </div>
                 </div>
               </div>
@@ -5777,6 +5857,7 @@
                   </tbody>
                 </table>
                 </div>
+                <div class="admin-panel-card-foot">管理员可重置密码、禁用异常账号；变更记录写入安全日志</div>
               </div>
             </div>
           </div>
