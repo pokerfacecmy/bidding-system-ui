@@ -1278,7 +1278,11 @@
       gap: 4px;
       color: var(--primary);
       font-size: 12px;
+      text-decoration: none;
+      cursor: pointer;
     }
+
+    .match-link:hover { text-decoration: underline; }
 
     .alert-list { list-style: none; padding: 0; }
 
@@ -2389,7 +2393,7 @@
               <span class="meta" style="padding-right:20px">D-01 · 报表格式对齐汇总表模板</span>
             </div>
             <div class="card-body">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin:14px 20px 12px;flex-wrap:wrap;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 12px;flex-wrap:wrap;gap:10px">
                 <div style="font-size:13px;color:var(--text-secondary)">
                   当前视图：<strong id="summaryTitle" style="color:var(--text)">汇总总表（全部 4 类合并）</strong>
                   <span class="tag green" style="margin-left:8px">模板 v3 已对齐</span>
@@ -2440,7 +2444,7 @@
                 <span class="meta">D-09 · 支持新增 / 关闭 / 超时重试</span>
               </div>
               <div class="card-body" style="padding-top:12px">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin:0 20px 12px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin:0 0 12px">
                   <span style="font-size:12px;color:var(--text-muted)">湖北全类型 · 其他省仅服务类（可配置）</span>
                   <button class="btn btn-sm btn-primary">＋ 新增省份任务</button>
                 </div>
@@ -5051,22 +5055,22 @@
                   <tr>
                     <td>商务文件_技术服务.docx</td><td><span class="tag green">商务</span></td><td>32</td><td>Word</td>
                     <td><span class="tag green">已生成</span></td>
-                    <td><div class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">下载</button></div></td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">下载</button></td>
                   </tr>
                   <tr>
                     <td>技术文件_技术服务.docx</td><td><span class="tag blue">技术</span></td><td>58</td><td>Word</td>
                     <td><span class="tag green">已生成</span></td>
-                    <td><div class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">下载</button></div></td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">下载</button></td>
                   </tr>
                   <tr>
                     <td>报价文件_技术服务.xlsx</td><td><span class="tag yellow">报价</span></td><td>6</td><td>Excel</td>
                     <td><span class="tag orange">生成中 72%</span></td>
-                    <td><div class="cell-actions"><button class="btn btn-sm" disabled>预览</button><button class="btn btn-sm" disabled>下载</button></div></td>
+                    <td class="cell-actions"><button class="btn btn-sm" disabled>预览</button><button class="btn btn-sm" disabled>下载</button></td>
                   </tr>
                   <tr>
                     <td>完整投标文件_技术服务.pdf</td><td><span class="tag purple">合并</span></td><td>—</td><td>双层PDF</td>
                     <td><span class="tag gray">待定稿转换</span></td>
-                    <td><div class="cell-actions"><button class="btn btn-sm" disabled>预览</button><button class="btn btn-sm" disabled>下载</button></div></td>
+                    <td class="cell-actions"><button class="btn btn-sm" disabled>预览</button><button class="btn btn-sm" disabled>下载</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -5188,22 +5192,22 @@
                     <tr class="urgent">
                       <td>湖北配网工程服务</td><td><span class="tag orange">终审</span></td><td>王部长</td><td>1 次</td>
                       <td><span class="tag red">1 天</span></td>
-                      <td><div class="cell-actions"><button class="btn btn-sm btn-primary">审核</button></div></td>
+                      <td class="cell-actions"><button class="btn btn-sm btn-primary">审核</button></td>
                     </tr>
                     <tr class="urgent">
                       <td>河南电力设备检测</td><td><span class="tag blue">初审</span></td><td>李主管</td><td>0 次</td>
                       <td><span class="tag red">22 小时</span></td>
-                      <td><div class="cell-actions"><button class="btn btn-sm btn-primary">审核</button></div></td>
+                      <td class="cell-actions"><button class="btn btn-sm btn-primary">审核</button></td>
                     </tr>
                     <tr>
                       <td>四川变电站运维</td><td><span class="tag orange">终审</span></td><td>王部长</td><td>2 次</td>
                       <td>3 天</td>
-                      <td><div class="cell-actions"><button class="btn btn-sm">审核</button></div></td>
+                      <td class="cell-actions"><button class="btn btn-sm">审核</button></td>
                     </tr>
                     <tr>
                       <td>安徽电网智能化咨询</td><td><span class="tag blue">初审</span></td><td>李主管</td><td>0 次</td>
                       <td>5 天</td>
-                      <td><div class="cell-actions"><button class="btn btn-sm">审核</button></div></td>
+                      <td class="cell-actions"><button class="btn btn-sm">审核</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -5379,8 +5383,8 @@
                     <td><span class="tag blue">v1.5</span></td>
                     <td><span class="tag outline">全员可见</span></td>
                     <td>李管理</td>
-                    <td>2025-08-12</td>
-                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm btn-primary">更新</button><span class="tag orange">90 天到期</span></td>
+                    <td>2025-08-12 <span class="tag orange" style="margin-left:6px">90 天到期</span></td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm btn-primary">更新</button></td>
                   </tr>
                   <tr data-res-cat="审计报告">
                     <td>2025 年度审计报告</td>
@@ -6347,34 +6351,44 @@
       }
 
       /* 人工校验 / 智能审查 Tab 切换 */
+      function applyVerifyTabState(tabsEl, tab) {
+        if (tab.dataset.review) {
+          var card = tabsEl.closest('.card');
+          if (card) {
+            card.querySelectorAll('[data-review-panel]').forEach(function (panel) {
+              panel.classList.toggle('active', panel.dataset.reviewPanel === tab.dataset.review);
+            });
+          }
+          return;
+        }
+
+        if (tab.dataset.verify) {
+          var verifyCard = tabsEl.closest('.card');
+          var tbody = verifyCard && verifyCard.querySelector('.data-table tbody');
+          if (tbody) {
+            var mode = tab.dataset.verify;
+            tbody.querySelectorAll('tr').forEach(function (row) {
+              row.style.display = (mode === 'all' || row.dataset.verify === mode) ? '' : 'none';
+            });
+          }
+        }
+      }
+
       document.querySelectorAll('.verify-tabs').forEach(function (tabsEl) {
         tabsEl.addEventListener('click', function (e) {
           var tab = e.target.closest('.verify-tab');
           if (!tab) return;
           tabsEl.querySelectorAll('.verify-tab').forEach(function (t) { t.classList.remove('active'); });
           tab.classList.add('active');
-
-          if (tab.dataset.review) {
-            var card = tabsEl.closest('.card');
-            if (card) {
-              card.querySelectorAll('[data-review-panel]').forEach(function (panel) {
-                panel.classList.toggle('active', panel.dataset.reviewPanel === tab.dataset.review);
-              });
-            }
-            return;
-          }
-
-          if (tab.dataset.verify) {
-            var verifyCard = tabsEl.closest('.card');
-            var tbody = verifyCard && verifyCard.querySelector('.data-table tbody');
-            if (tbody) {
-              var mode = tab.dataset.verify;
-              tbody.querySelectorAll('tr').forEach(function (row) {
-                row.style.display = (mode === 'all' || row.dataset.verify === mode) ? '' : 'none';
-              });
-            }
-          }
+          applyVerifyTabState(tabsEl, tab);
         });
+
+        var initialTab = tabsEl.querySelector('.verify-tab.active');
+        if (initialTab) applyVerifyTabState(tabsEl, initialTab);
+      });
+
+      document.querySelectorAll('a.match-link[href="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) { e.preventDefault(); });
       });
 
       /* 资源库分类 Tab 筛选 */
