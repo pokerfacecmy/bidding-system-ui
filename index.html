@@ -270,6 +270,74 @@
       border: 2px solid var(--surface);
     }
 
+    .notification-wrap {
+      position: relative;
+    }
+
+    .notification-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: 380px;
+      max-height: 420px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      z-index: 200;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .notification-wrap.open .notification-dropdown {
+      display: flex;
+    }
+
+    .notification-wrap.open .icon-btn {
+      background: var(--border);
+    }
+
+    .notification-dropdown-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .notification-dropdown-header h3 {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .notification-list {
+      overflow-y: auto;
+      flex: 1;
+      padding: 0;
+    }
+
+    .notification-list .activity-item {
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .notification-list .activity-item:hover {
+      background: var(--bg);
+    }
+
+    .notification-list .activity-item.unread {
+      background: #F8FAFC;
+    }
+
+    .notification-dropdown-footer {
+      padding: 10px 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
     .user-menu {
       display: flex;
       align-items: center;
@@ -730,12 +798,43 @@
       font-weight: 500;
     }
 
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .data-table.match-bid-table th.col-pub,
+    .data-table.match-bid-table td.cell-pub {
+      min-width: 148px;
+    }
+
+    .data-table.match-bid-table th.col-status,
+    .data-table.match-bid-table td.cell-status {
+      width: 1%;
+      min-width: 76px;
+      white-space: nowrap;
+    }
+
+    .pub-match {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .pub-ref {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
     .tag {
       display: inline-block;
       padding: 2px 8px;
       border-radius: 4px;
       font-size: 11px;
       font-weight: 500;
+      white-space: nowrap;
     }
 
     .tag.red { background: var(--danger-bg); color: var(--danger); }
@@ -1249,13 +1348,23 @@
     .dedup-stats strong { color: var(--text); margin-left: 4px; }
 
     .cell-actions {
-      display: flex;
+      display: inline-flex;
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
       min-width: 128px;
+    }
+
+    /* flex on <td> breaks table-cell layout and row border-collapse */
+    td.cell-actions {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    td.cell-actions > :not(:first-child) {
+      margin-left: 6px;
     }
 
     .cell-actions .btn {
@@ -1771,10 +1880,58 @@
             <span>📅</span>
             <span id="currentDate"></span>
           </div>
-          <button class="icon-btn" title="通知中心" aria-label="通知">
-            🔔
-            <span class="badge"></span>
-          </button>
+          <div class="notification-wrap" id="notificationWrap">
+            <button type="button" class="icon-btn" id="notificationBtn" title="通知中心" aria-label="通知" aria-expanded="false" aria-haspopup="true">
+              🔔
+              <span class="badge" id="notificationBadge"></span>
+            </button>
+            <div class="notification-dropdown" id="notificationDropdown" role="menu" aria-label="通知列表">
+              <div class="notification-dropdown-header">
+                <h3>通知中心</h3>
+                <span class="meta">4 条未读</span>
+              </div>
+              <ul class="activity-list notification-list">
+                <li class="activity-item unread">
+                  <div class="activity-icon danger">!</div>
+                  <div class="activity-content">
+                    <p><strong>截止预警</strong>：河南郑州电力设备检测服务报名截止不足 6 小时，尚未完成报名</p>
+                    <time>10 分钟前</time>
+                  </div>
+                </li>
+                <li class="activity-item unread">
+                  <div class="activity-icon warn">⏰</div>
+                  <div class="activity-content">
+                    <p><strong>开标提醒</strong>：四川成都变电站运维服务项目今日 14:00 开标</p>
+                    <time>1 小时前</time>
+                  </div>
+                </li>
+                <li class="activity-item unread">
+                  <div class="activity-icon info">📋</div>
+                  <div class="activity-content">
+                    <p><strong>审核待办</strong>：湖北省配网工程服务标书已通过初审，待您终审确认</p>
+                    <time>今天 09:30</time>
+                  </div>
+                </li>
+                <li class="activity-item unread">
+                  <div class="activity-icon warn">📜</div>
+                  <div class="activity-content">
+                    <p><strong>资质提醒</strong>：企业资质证书「ISO9001」将于 90 天内到期，请及时更新</p>
+                    <time>昨天 09:15</time>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon success">✓</div>
+                  <div class="activity-content">
+                    <p>今日采集任务已完成，共抓取 152 条公告，Excel 已推送至工作群</p>
+                    <time>今天 08:00</time>
+                  </div>
+                </li>
+              </ul>
+              <div class="notification-dropdown-footer">
+                <button type="button" class="link-btn" id="notificationViewAll">查看全部消息</button>
+              </div>
+            </div>
+          </div>
           <div class="user-menu">
             <div class="avatar">张</div>
             <div class="user-info">
@@ -3289,16 +3446,17 @@
                 <span class="meta">D-11 · 重标编号与编标处 P4 按包编号唯一关联</span>
               </div>
               <div class="card-body">
-                <table class="data-table">
+                <div class="table-scroll">
+                <table class="data-table match-bid-table">
                   <thead>
                     <tr>
                       <th>招标公告</th>
                       <th>编号</th>
                       <th>重标编号(P4)</th>
-                      <th>中标候选人公示</th>
+                      <th class="col-pub">中标候选人公示</th>
                       <th>第一候选人</th>
                       <th>中标金额</th>
-                      <th>状态</th>
+                      <th class="col-status">状态</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -3306,49 +3464,65 @@
                       <td>安徽合肥电网智能化改造咨询</td>
                       <td>AH-ETP-2026-0278</td>
                       <td><span class="tag blue">P4-2026-A0231</span></td>
-                      <td><span class="match-link">→ 同编号公示 ✓</span></td>
+                      <td class="cell-pub">
+                        <div class="pub-match">
+                          <span class="tag green">同编号</span>
+                          <a href="#" class="match-link">查看公示</a>
+                        </div>
+                      </td>
                       <td>安徽XX工程咨询有限公司</td>
                       <td>368 万</td>
-                      <td><span class="tag green">已匹配</span></td>
+                      <td class="cell-status"><span class="tag green">已匹配</span></td>
                     </tr>
                     <tr>
                       <td>江西南昌配网运维框架服务</td>
                       <td>JX-ETP-2026-0156</td>
                       <td><span class="tag blue">P4-2026-J0177</span></td>
-                      <td><span class="match-link">→ 0156-C1（包号）</span></td>
+                      <td class="cell-pub">
+                        <div class="pub-match">
+                          <span class="tag blue">包号</span>
+                          <span class="pub-ref">0156-C1</span>
+                        </div>
+                      </td>
                       <td>江西YY电力服务有限公司</td>
                       <td>—</td>
-                      <td><span class="tag green">已匹配</span></td>
+                      <td class="cell-status"><span class="tag green">已匹配</span></td>
                     </tr>
                     <tr>
                       <td>湖北宜昌线路巡检框架服务</td>
                       <td>HB-ECP-2026-0618</td>
                       <td><span class="tag blue">P4-2026-H0312</span></td>
-                      <td><span class="match-link" style="color:var(--text-muted)">— 暂无公示</span></td>
+                      <td class="cell-pub"><span class="tag gray">暂无公示</span></td>
                       <td>—</td>
                       <td>—</td>
-                      <td><span class="tag gray">待公示</span></td>
+                      <td class="cell-status"><span class="tag gray">待公示</span></td>
                     </tr>
                     <tr>
                       <td>河南郑州电力设备检测服务</td>
                       <td>HN-ECP-2026-0189</td>
                       <td><span class="tag orange">未关联</span></td>
-                      <td><span class="match-link">→ 项目名称模糊匹配</span></td>
+                      <td class="cell-pub">
+                        <div class="pub-match">
+                          <span class="tag orange">模糊匹配</span>
+                          <a href="#" class="match-link">查看候选</a>
+                        </div>
+                      </td>
                       <td>河南ZZ检测技术有限公司</td>
                       <td>142 万</td>
-                      <td><span class="tag orange">待确认</span></td>
+                      <td class="cell-status"><span class="tag orange">待确认</span></td>
                     </tr>
                     <tr>
                       <td>四川成都变电站运维服务项目</td>
                       <td>SC-ETP-2026-0345</td>
                       <td><span class="tag blue">P4-2026-S0098</span></td>
-                      <td><span class="match-link" style="color:var(--text-muted)">— 暂无公示</span></td>
+                      <td class="cell-pub"><span class="tag gray">暂无公示</span></td>
                       <td>—</td>
                       <td>—</td>
-                      <td><span class="tag gray">待公示</span></td>
+                      <td class="cell-status"><span class="tag gray">待公示</span></td>
                     </tr>
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
 
@@ -6265,6 +6439,60 @@
           switchPanel(btn.dataset.goto, btn.dataset.title);
         });
       });
+
+      /* 通知中心下拉 */
+      var notificationWrap = document.getElementById('notificationWrap');
+      var notificationBtn = document.getElementById('notificationBtn');
+      var notificationBadge = document.getElementById('notificationBadge');
+
+      function closeNotificationDropdown() {
+        if (!notificationWrap) return;
+        notificationWrap.classList.remove('open');
+        if (notificationBtn) notificationBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleNotificationDropdown() {
+        if (!notificationWrap) return;
+        var isOpen = notificationWrap.classList.toggle('open');
+        if (notificationBtn) notificationBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      if (notificationBtn && notificationWrap) {
+        notificationBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          toggleNotificationDropdown();
+        });
+
+        document.addEventListener('click', function () {
+          if (notificationWrap.classList.contains('open')) closeNotificationDropdown();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeNotificationDropdown();
+        });
+
+        notificationWrap.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+
+        notificationWrap.querySelectorAll('.notification-list .activity-item').forEach(function (item) {
+          item.addEventListener('click', function () {
+            item.classList.remove('unread');
+            var unread = notificationWrap.querySelectorAll('.notification-list .activity-item.unread').length;
+            var meta = notificationWrap.querySelector('.notification-dropdown-header .meta');
+            if (meta) meta.textContent = unread ? unread + ' 条未读' : '全部已读';
+            if (notificationBadge) notificationBadge.style.display = unread ? '' : 'none';
+          });
+        });
+      }
+
+      var notificationViewAll = document.getElementById('notificationViewAll');
+      if (notificationViewAll) {
+        notificationViewAll.addEventListener('click', function () {
+          closeNotificationDropdown();
+          switchPanel('module-6', '消息推送');
+        });
+      }
 
       document.getElementById('sidebarNav').addEventListener('click', function (e) {
         var toggle = e.target.closest('.nav-group-toggle');
