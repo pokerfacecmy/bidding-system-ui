@@ -1084,6 +1084,12 @@
       margin-bottom: 24px;
     }
 
+    /* 防止 grid 子项按内容最小宽度撑破列宽导致相邻卡片重叠 */
+    .split-grid > *,
+    .split-grid-3-2 > * {
+      min-width: 0;
+    }
+
     .progress-wrap {
       display: flex;
       align-items: center;
@@ -1377,6 +1383,65 @@
 
     .cell-actions .btn-sm {
       padding: 4px 10px;
+    }
+
+    /* 系统管理运维：双栏表格在扣除侧栏后内容区偏窄时改为纵向堆叠 */
+    #panel-module-15 .admin-panels-grid,
+    #panel-module-15 .admin-ops-grid {
+      align-items: start;
+    }
+
+    #panel-module-15 .card .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #panel-module-15 .data-table.admin-rules-table {
+      min-width: 720px;
+    }
+
+    #panel-module-15 .data-table.admin-account-table {
+      min-width: 560px;
+    }
+
+    #panel-module-15 .data-table.admin-account-table th.col-status,
+    #panel-module-15 .data-table.admin-account-table td.cell-status,
+    #panel-module-15 .data-table.admin-account-table th.col-login,
+    #panel-module-15 .data-table.admin-account-table td.cell-login {
+      white-space: nowrap;
+    }
+
+    #panel-module-15 .data-table.admin-rules-table th.col-actions,
+    #panel-module-15 .data-table.admin-rules-table td.cell-actions,
+    #panel-module-15 .data-table.admin-account-table th.col-actions,
+    #panel-module-15 .data-table.admin-account-table td.cell-actions {
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    #panel-module-15 .page-toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 1680px) {
+      #panel-module-15 .admin-panels-grid,
+      #panel-module-15 .admin-ops-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      #panel-module-15 .page-toolbar {
+        align-items: flex-start;
+      }
+
+      #panel-module-15 .page-toolbar-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 1400px) {
@@ -5497,7 +5562,7 @@
             <div class="page-toolbar-left">
               <span class="br-badge">D-04 · D-09 · BR-18</span>
             </div>
-            <div>
+            <div class="page-toolbar-actions">
               <button class="btn btn-sm">导出日志</button>
               <button class="btn btn-sm">＋ 新增账号</button>
               <button class="btn btn-primary btn-sm">保存配置</button>
@@ -5539,14 +5604,15 @@
             </div>
           </div>
 
-          <div class="split-grid" style="margin-bottom:24px">
+          <div class="split-grid admin-panels-grid" style="margin-bottom:24px">
             <div class="card" style="margin-bottom:0">
               <div class="card-header">
                 <h3>抓取规则配置</h3>
                 <span class="meta">省份开关 · 业务范围 · 超时重试</span>
               </div>
               <div class="card-body" style="padding:0">
-                <table class="data-table">
+                <div class="table-scroll">
+                <table class="data-table admin-rules-table">
                   <thead>
                     <tr>
                       <th>省份</th>
@@ -5555,7 +5621,7 @@
                       <th>ETP</th>
                       <th>状态</th>
                       <th>重试</th>
-                      <th>操作</th>
+                      <th class="col-actions">操作</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -5615,6 +5681,7 @@
                     </tr>
                   </tbody>
                 </table>
+                </div>
                 <div style="margin:0 20px;padding:12px 0;border-top:1px solid var(--border)">
                   <div class="config-row">
                     <div class="cr-label"><strong>定时采集时间</strong><small>与模块② 数据收集联动</small></div>
@@ -5641,47 +5708,49 @@
                 <span class="meta">角色 · 状态 · 最近登录</span>
               </div>
               <div class="card-body" style="padding:0">
-                <table class="data-table">
+                <div class="table-scroll">
+                <table class="data-table admin-account-table">
                   <thead>
                     <tr>
                       <th>姓名</th>
                       <th>角色</th>
-                      <th>状态</th>
-                      <th>最近登录</th>
-                      <th>操作</th>
+                      <th class="col-status">状态</th>
+                      <th class="col-login">最近登录</th>
+                      <th class="col-actions">操作</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td><strong>李管理</strong><br><small style="color:var(--text-muted)">admin@company.com</small></td>
                       <td><span class="tag purple">系统管理员</span></td>
-                      <td><span class="tag green">正常</span></td>
-                      <td>06-11 12:40</td>
+                      <td class="cell-status"><span class="tag green">正常</span></td>
+                      <td class="cell-login">06-11 12:40</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">重置密码</button></td>
                     </tr>
                     <tr>
                       <td><strong>张专员</strong><br><small style="color:var(--text-muted)">zhang@company.com</small></td>
                       <td><span class="tag blue">投标专员</span></td>
-                      <td><span class="tag green">正常</span></td>
-                      <td>06-11 11:22</td>
+                      <td class="cell-status"><span class="tag green">正常</span></td>
+                      <td class="cell-login">06-11 11:22</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">重置密码</button></td>
                     </tr>
                     <tr>
                       <td><strong>王审核</strong><br><small style="color:var(--text-muted)">wang@company.com</small></td>
                       <td><span class="tag green">审核负责人</span></td>
-                      <td><span class="tag green">正常</span></td>
-                      <td>06-10 17:05</td>
+                      <td class="cell-status"><span class="tag green">正常</span></td>
+                      <td class="cell-login">06-10 17:05</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">重置密码</button></td>
                     </tr>
                     <tr>
                       <td><strong>赵财务</strong><br><small style="color:var(--text-muted)">zhao@company.com</small></td>
                       <td><span class="tag orange">财务人员</span></td>
-                      <td><span class="tag orange">30 天未登录</span></td>
-                      <td>05-12 09:18</td>
+                      <td class="cell-status"><span class="tag orange">30 天未登录</span></td>
+                      <td class="cell-login">05-12 09:18</td>
                       <td class="cell-actions"><button class="btn btn-sm">编辑</button><button class="btn btn-sm">禁用</button></td>
                     </tr>
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
           </div>
@@ -5770,7 +5839,7 @@
             </div>
           </div>
 
-          <div class="split-grid">
+          <div class="split-grid admin-ops-grid">
             <div class="card">
               <div class="card-header">
                 <h3>断点续传</h3>
