@@ -1386,9 +1386,35 @@
     }
 
     /* 系统管理运维：双栏表格在扣除侧栏后内容区偏窄时改为纵向堆叠 */
-    #panel-module-15 .admin-panels-grid,
-    #panel-module-15 .admin-ops-grid {
+    #panel-module-15 .admin-panels-grid {
       align-items: start;
+    }
+
+    /* 断点续传 / 历史补录：同行卡片等高，底部按钮贴齐 */
+    #panel-module-15 .admin-ops-grid {
+      align-items: stretch;
+    }
+
+    #panel-module-15 .admin-ops-grid > .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-bottom: 0;
+    }
+
+    #panel-module-15 .admin-ops-grid > .card > .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    #panel-module-15 .admin-ops-card-footer {
+      margin-top: auto;
+      padding-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     #panel-module-15 .card .table-scroll {
@@ -5893,7 +5919,7 @@
                     </div>
                   </li>
                 </ul>
-                <div style="margin-top:12px;display:flex;gap:8px">
+                <div class="admin-ops-card-footer">
                   <button class="btn btn-sm btn-primary">立即补采</button>
                   <button class="btn btn-sm action-btn" data-goto="module-2" data-title="数据收集">📥 手动导入补录</button>
                 </div>
