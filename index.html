@@ -1452,11 +1452,12 @@
       display: flex;
       align-items: stretch;
       gap: 0;
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 10px 20px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 10px 8px;
-      margin-bottom: 24px;
       overflow-x: auto;
     }
     .stage-step {
@@ -1478,7 +1479,14 @@
     .stage-step.done .ss-no { background: var(--success); color: #fff; }
     .stage-step.active { color: var(--primary); font-weight: 600; }
     .stage-step.active .ss-no { background: var(--primary); color: #fff; }
-    .stage-step .ss-arrow { color: var(--text-muted); margin: 0 2px; }
+    .stage-flow > li.ss-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 0 4px;
+      flex-shrink: 0;
+    }
 
     /* 双栏解析布局：左文档 / 右提取 */
     .parse-layout {
@@ -1649,6 +1657,16 @@
     .score-bar-fill.biz { background: var(--success); }
     .score-bar-fill.price { background: var(--warning); }
     .score-bar-row .sb-val { text-align: right; font-weight: 600; color: var(--text); }
+
+    /* 第二期投标作业页（⑧～⑬）：卡片内容左右留白 */
+    #panel-module-8 .card-body,
+    #panel-module-9 .card-body,
+    #panel-module-10 .card-body,
+    #panel-module-11 .card-body,
+    #panel-module-12 .card-body,
+    #panel-module-13 .card-body {
+      padding: 16px 20px;
+    }
 
     @media (max-width: 1400px) {
       .parse-layout { grid-template-columns: 1fr; }
