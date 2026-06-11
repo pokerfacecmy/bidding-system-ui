@@ -4589,7 +4589,176 @@
             </div>
           </div>
         </section>
-        <section class="panel" id="panel-module-11" data-module="⑪ 评分标准智能评分测算" data-desc="得分点匹配定位、报价分测算、综合得分与中标概率预估。"></section>
+        <section class="panel" id="panel-module-11">
+          <div class="meeting-note">
+            <span class="mn-icon">🎯</span>
+            <div>
+              <span class="mn-tag">第二期 · B6</span><span class="phase-badge p2" style="margin-left:0">投标作业</span>
+              按评分标准<strong>匹配标书内容并定位章节+页码</strong>，输出逐项得分；支持低价优先、综合评分法等<strong>报价分测算与建议区间</strong>；
+              汇总<strong>综合得分、排名与中标概率预估</strong>（BR-53～55）。<strong>测算结果仅供内部决策参考，不构成承诺</strong>。
+            </div>
+          </div>
+
+          <ul class="stage-flow">
+            <li class="stage-step done"><span class="ss-no">✓</span> 智能审查</li>
+            <li class="ss-arrow">→</li>
+            <li class="stage-step active"><span class="ss-no">6</span> 评分测算</li>
+            <li class="ss-arrow">→</li>
+            <li class="stage-step"><span class="ss-no">7</span> 文件生成</li>
+            <li class="ss-arrow">→</li>
+            <li class="stage-step"><span class="ss-no">8</span> 审核</li>
+          </ul>
+
+          <div class="page-toolbar">
+            <div class="page-toolbar-left">
+              <span class="br-badge">BR-53～55 · 评分测算</span>
+              <select class="btn btn-sm" style="font-size:12px">
+                <option>评标办法：综合评分法</option>
+                <option>评标办法：低价优先法</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn btn-sm">🔁 重新测算</button>
+              <button class="btn btn-primary btn-sm">⬇ 导出测算报告</button>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue">🧮</div>
+              <div class="kpi-body">
+                <label>综合得分预估</label>
+                <div class="value">88.6</div>
+                <div class="trend">满分 100 · 自评</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon green">🏅</div>
+              <div class="kpi-body">
+                <label>排名预估</label>
+                <div class="value">2 / 7</div>
+                <div class="trend">基于公开规则与历史数据</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon orange">📊</div>
+              <div class="kpi-body">
+                <label>中标概率</label>
+                <div class="value">58%</div>
+                <div class="trend">中高 · 提升报价竞争力可上探</div>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon red">💰</div>
+              <div class="kpi-body">
+                <label>建议报价区间</label>
+                <div class="value">385–398万</div>
+                <div class="trend">兼顾报价分与利润</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-grid-3-2" style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px;margin-bottom:24px">
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <h3>分项得分测算</h3>
+                <span class="meta">商务 10% · 技术 60% · 价格 30%</span>
+              </div>
+              <div class="card-body">
+                <div class="score-bars">
+                  <div class="score-bar-row">
+                    <span>商务分</span>
+                    <span class="score-bar-track"><span class="score-bar-fill biz" style="width:90%"></span></span>
+                    <span class="sb-val">9.0 / 10</span>
+                  </div>
+                  <div class="score-bar-row">
+                    <span>技术分</span>
+                    <span class="score-bar-track"><span class="score-bar-fill tech" style="width:88%"></span></span>
+                    <span class="sb-val">52.8 / 60</span>
+                  </div>
+                  <div class="score-bar-row">
+                    <span>价格分</span>
+                    <span class="score-bar-track"><span class="score-bar-fill price" style="width:89%"></span></span>
+                    <span class="sb-val">26.8 / 30</span>
+                  </div>
+                  <div class="score-bar-row" style="border-top:1px solid var(--border);padding-top:12px">
+                    <span style="font-weight:600">综合得分</span>
+                    <span class="score-bar-track"><span class="score-bar-fill" style="width:88.6%"></span></span>
+                    <span class="sb-val" style="color:var(--primary)">88.6 / 100</span>
+                  </div>
+                </div>
+                <div class="dedup-stats" style="margin-top:16px">
+                  <span>对比上期同类项目中标线：<strong>约 85.2 分</strong></span>
+                  <span style="color:var(--success)">本方案高于预估中标线 3.4 分</span>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0">
+              <div class="card-header">
+                <h3>中标概率预估</h3>
+                <span class="meta">BR-55 · 参考值</span>
+              </div>
+              <div class="card-body" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+                <div class="donut" style="width:150px;height:150px;background:conic-gradient(var(--primary) 0% 58%, var(--border) 58% 100%)">
+                  <div class="donut-center"><strong style="font-size:30px">58%</strong><span>中标概率</span></div>
+                </div>
+                <div class="donut-legend" style="margin-top:16px">
+                  <div class="legend-item"><span class="legend-dot" style="background:var(--primary)"></span>预估胜出 58%</div>
+                  <div class="legend-item"><span class="legend-dot" style="background:var(--border)"></span>竞争落标 42%</div>
+                </div>
+                <p style="font-size:11px;color:var(--text-muted);margin-top:12px;text-align:center">基于公开评分规则与本企业历史数据测算，供内部决策参考</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:24px">
+            <div class="card-header">
+              <h3>得分点匹配与定位（BR-53）</h3>
+              <span class="meta">逐项得分 · 关联章节+页码 · 自动截图佐证</span>
+            </div>
+            <div class="card-body">
+              <table class="data-table">
+                <thead>
+                  <tr><th>得分点</th><th>分值</th><th>匹配内容定位</th><th>自评得分</th><th>佐证</th><th>状态</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>企业资质等级</td><td>4</td><td>第二章 2.1 · P12</td><td>3.0</td><td><a href="#" class="match-link">📷 截图</a></td><td><span class="tag green">已匹配</span></td></tr>
+                  <tr><td>技术方案完整性</td><td>20</td><td>第三章 3.1–3.4 · P28-46</td><td>18.0</td><td><a href="#" class="match-link">📷 截图</a></td><td><span class="tag green">已匹配</span></td></tr>
+                  <tr><td>同类业绩</td><td>15</td><td>第二章 2.3 · P18-23</td><td>15.0</td><td><a href="#" class="match-link">📷 截图</a></td><td><span class="tag green">满分</span></td></tr>
+                  <tr><td>项目团队配置</td><td>10</td><td>第三章 3.5 · P47</td><td>8.0</td><td><a href="#" class="match-link">📷 截图</a></td><td><span class="tag green">已匹配</span></td></tr>
+                  <tr class="row-ineligible"><td>应急响应预案</td><td>6</td><td>未检索到对应章节</td><td>3.0</td><td><span class="tag gray">缺佐证</span></td><td><span class="tag orange">建议补充</span></td></tr>
+                  <tr><td>投标报价</td><td>30</td><td>第四章 4.1 · P58</td><td>26.8</td><td><a href="#" class="match-link">📷 截图</a></td><td><span class="tag green">已测算</span></td></tr>
+                </tbody>
+              </table>
+              <div class="dedup-stats"><span>已匹配定位 <strong>25 / 26</strong> 个得分点</span><span style="color:var(--warning)">1 项缺佐证，补充后预估可 +3 分</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>报价分测算与策略（BR-54）</h3>
+              <span class="meta">综合评分法 · 不同报价对应得分与利润敏感性</span>
+            </div>
+            <div class="card-body">
+              <table class="data-table">
+                <thead>
+                  <tr><th>报价方案</th><th>报价金额</th><th>价格分</th><th>综合得分</th><th>毛利率</th><th>中标概率</th><th>建议</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>激进低价</td><td>¥378万</td><td>30.0</td><td>91.8</td><td><span class="tag orange">8%</span></td><td>71%</td><td><span class="tag gray">利润偏薄</span></td></tr>
+                  <tr class="row-eligible row-focus"><td>推荐方案</td><td>¥389万</td><td>27.9</td><td>89.7</td><td><span class="tag green">12%</span></td><td>62%</td><td><span class="tag green">★ 平衡最优</span></td></tr>
+                  <tr><td>稳健报价</td><td>¥398万</td><td>26.8</td><td>88.6</td><td><span class="tag green">15%</span></td><td>58%</td><td><span class="tag blue">利润优先</span></td></tr>
+                  <tr><td>保利润</td><td>¥415万</td><td>23.5</td><td>85.3</td><td><span class="tag green">19%</span></td><td>41%</td><td><span class="tag orange">竞争力弱</span></td></tr>
+                </tbody>
+              </table>
+              <div class="dedup-stats">
+                <span>基准价（测算）：<strong>¥382.6 万</strong></span>
+                <span>建议报价区间：<strong>385–398 万</strong></span>
+                <span style="color:var(--text-muted)">报价策略为测算参考，最终由人工拍板</span>
+              </div>
+            </div>
+          </div>
+        </section>
         <section class="panel" id="panel-module-12" data-module="⑫ 投标文件生成" data-desc="一键生成商务/技术/报价文件，多模板支持，定稿后双层 PDF 转换。"></section>
         <section class="panel" id="panel-module-13" data-module="⑬ 投标文件审核" data-desc="初审/终审流转，退回修改，编制工作量与退改统计。"></section>
         <section class="panel" id="panel-module-14">
@@ -4789,7 +4958,7 @@
         'module-14': '📁', 'module-15': '⚙️', 'module-16': '🔒'
       };
 
-      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-7', 'module-8', 'module-9', 'module-10', 'module-14'];
+      var leadModules = ['module-2', 'module-3', 'module-4', 'module-screen', 'module-5', 'module-6', 'module-7', 'module-8', 'module-9', 'module-10', 'module-11', 'module-14'];
 
       document.querySelectorAll('.panel[id^="panel-module"]').forEach(function (panel) {
         var id = panel.id.replace('panel-', '');
