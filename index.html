@@ -666,8 +666,24 @@
     }
 
     .card-body {
-      padding: 0;
+      padding: 16px 20px;
     }
+
+    /* 卡片内表格底栏贴边，避免与 body 内边距双重内缩 */
+    .card-body > .dedup-stats {
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-bottom: -16px;
+    }
+
+    .card-body > .stat-row {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    /* 智能审查 Tab 面板 */
+    .review-panel { display: none; }
+    .review-panel.active { display: block; }
 
     /* Table */
     .data-table {
@@ -1658,16 +1674,6 @@
     .score-bar-fill.price { background: var(--warning); }
     .score-bar-row .sb-val { text-align: right; font-weight: 600; color: var(--text); }
 
-    /* 第二期投标作业页（⑧～⑬）：卡片内容左右留白 */
-    #panel-module-8 .card-body,
-    #panel-module-9 .card-body,
-    #panel-module-10 .card-body,
-    #panel-module-11 .card-body,
-    #panel-module-12 .card-body,
-    #panel-module-13 .card-body {
-      padding: 16px 20px;
-    }
-
     @media (max-width: 1400px) {
       .parse-layout { grid-template-columns: 1fr; }
       .template-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1717,9 +1723,9 @@
         </div>
 
         <div class="nav-section-label">第二期 · 投标作业</div>
-        <div class="nav-group" data-group="bidding">
+        <div class="nav-group open" data-group="bidding">
           <div class="nav-item nav-group-toggle">
-            <span><span class="icon">📝</span> 投标作业<span class="phase-badge p2">后期</span></span>
+            <span><span class="icon">📝</span> 投标作业<span class="phase-badge p2">二期</span></span>
             <span class="chevron">▶</span>
           </div>
           <div class="nav-sub">
@@ -2086,15 +2092,15 @@
                   <span class="meta">精简操作 · 以查看为主</span>
                 </div>
                 <div class="quick-actions">
-                  <button class="action-btn">
+                  <button class="action-btn" data-goto="module-2" data-title="数据收集">
                     <span class="action-icon">🔍</span>
                     <span>查看今日采集</span>
                   </button>
-                  <button class="action-btn">
+                  <button class="action-btn" data-goto="module-2" data-title="数据收集">
                     <span class="action-icon">📊</span>
                     <span>下载汇总表</span>
                   </button>
-                  <button class="action-btn">
+                  <button class="action-btn" data-goto="module-screen" data-title="项目筛选匹配">
                     <span class="action-icon">🧭</span>
                     <span>查看可投项目</span>
                   </button>
@@ -2962,8 +2968,8 @@
                     <th>操作</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody id="verifyTableBody">
+                  <tr data-verify="pending">
                     <td>安徽合肥电网智能化改造咨询</td>
                     <td>国网安徽省电力有限公司</td>
                     <td><span class="tag red">缺失</span></td>
@@ -2975,7 +2981,7 @@
                     <td><span class="tag red">规则未通过</span><br><small style="color:var(--text-muted)">报名/开标时间为空</small></td>
                     <td class="cell-actions"><button class="btn btn-sm btn-primary">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
-                  <tr>
+                  <tr data-verify="pending">
                     <td>河南郑州电力设备检测服务</td>
                     <td>国网河南省电力公司</td>
                     <td>06-06 12:00</td>
@@ -2987,7 +2993,7 @@
                     <td><span class="tag orange">规则未通过</span><br><small style="color:var(--text-muted)">预算/限价缺失</small></td>
                     <td class="cell-actions"><button class="btn btn-sm btn-primary">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
-                  <tr>
+                  <tr data-verify="confirmed">
                     <td>湖北省2026年配网工程服务采购</td>
                     <td>国网湖北省电力有限公司</td>
                     <td>06-06 17:00</td>
@@ -2999,7 +3005,7 @@
                     <td><span class="tag green">已确认</span><br><small style="color:var(--text-muted)">张专员 06-05 复核</small></td>
                     <td class="cell-actions"><button class="btn btn-sm">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
-                  <tr>
+                  <tr data-verify="confirmed">
                     <td>四川成都变电站运维服务项目</td>
                     <td>国网四川省电力公司</td>
                     <td>06-08 16:00</td>
@@ -3011,7 +3017,7 @@
                     <td><span class="tag green">已确认</span><br><small style="color:var(--text-muted)">规则通过 · 已抽检</small></td>
                     <td class="cell-actions"><button class="btn btn-sm">修正并同步</button><button class="btn btn-sm">记录</button></td>
                   </tr>
-                  <tr>
+                  <tr data-verify="confirmed">
                     <td>重庆万州配网运维服务采购</td>
                     <td>国网重庆市电力公司</td>
                     <td>06-11 15:00</td>
@@ -3884,17 +3890,17 @@
           <ul class="stage-flow">
             <li class="stage-step done"><span class="ss-no">✓</span> 投标项目管理</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">3</span> 招标文件解析</li>
+            <li class="stage-step active"><span class="ss-no">2</span> 招标文件解析</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">4</span> 标书生成</li>
+            <li class="stage-step"><span class="ss-no">3</span> 标书生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">5</span> 智能审查</li>
+            <li class="stage-step"><span class="ss-no">4</span> 智能审查</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 评分测算</li>
+            <li class="stage-step"><span class="ss-no">5</span> 评分测算</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 文件生成</li>
+            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">8</span> 审核</li>
+            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
           </ul>
 
           <div class="page-toolbar">
@@ -4197,15 +4203,15 @@
           <ul class="stage-flow">
             <li class="stage-step done"><span class="ss-no">✓</span> 招标文件解析</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">4</span> 标书生成与编写</li>
+            <li class="stage-step active"><span class="ss-no">3</span> 标书生成与编写</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">5</span> 智能审查</li>
+            <li class="stage-step"><span class="ss-no">4</span> 智能审查</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 评分测算</li>
+            <li class="stage-step"><span class="ss-no">5</span> 评分测算</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 文件生成</li>
+            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">8</span> 审核</li>
+            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
           </ul>
 
           <div class="page-toolbar">
@@ -4399,13 +4405,13 @@
           <ul class="stage-flow">
             <li class="stage-step done"><span class="ss-no">✓</span> 标书生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">5</span> 智能审查</li>
+            <li class="stage-step active"><span class="ss-no">4</span> 智能审查</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 评分测算</li>
+            <li class="stage-step"><span class="ss-no">5</span> 评分测算</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 文件生成</li>
+            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">8</span> 审核</li>
+            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
           </ul>
 
           <div class="page-toolbar">
@@ -4455,72 +4461,66 @@
             </div>
           </div>
 
-          <div class="card" style="margin-bottom:24px">
+          <div class="card" style="margin-bottom:24px" id="reviewCard">
             <div class="card-header" style="padding:0;border:none">
-              <div class="verify-tabs">
-                <button class="verify-tab active">废标响应性核查</button>
-                <button class="verify-tab">一致性检查</button>
-                <button class="verify-tab">报价复核</button>
-                <button class="verify-tab">质量自检</button>
-                <button class="verify-tab">原创性比对</button>
-                <button class="verify-tab">提交前文件自检</button>
+              <div class="verify-tabs" id="reviewTabs">
+                <button class="verify-tab active" data-review="disqualify">废标响应性核查</button>
+                <button class="verify-tab" data-review="consistency">一致性检查</button>
+                <button class="verify-tab" data-review="price">报价复核</button>
+                <button class="verify-tab" data-review="quality">质量自检</button>
+                <button class="verify-tab" data-review="originality">原创性比对</button>
+                <button class="verify-tab" data-review="preflight">提交前文件自检</button>
               </div>
               <span class="meta" style="padding-right:20px">通过 / 不通过 / 未填写</span>
             </div>
-            <div class="card-body">
-              <ul class="checklist">
-                <li class="check-item">
-                  <span class="check-mark fail">!</span>
-                  <div class="check-body">
-                    <div class="ci-title">驻场人员数量未达废标线</div>
-                    <div class="ci-desc">招标要求 ≥8 人，我方技术方案 3.2 仅配置 6 人 —— 命中"否决条款"。</div>
-                    <div class="ci-quote">原文："驻场人员不足将作无效投标处理" · 投标人须知 5.3</div>
-                  </div>
-                  <span class="tag red">不通过</span>
-                </li>
-                <li class="check-item">
-                  <span class="check-mark fail">!</span>
-                  <div class="check-body">
-                    <div class="ci-title">缺少法定代表人授权委托书签字页</div>
-                    <div class="ci-desc">第一章 1.2 委托书为模板占位，未上传签字盖章扫描件 —— 实质性响应缺失。</div>
-                  </div>
-                  <span class="tag red">不通过</span>
-                </li>
-                <li class="check-item">
-                  <span class="check-mark warn">⚠</span>
-                  <div class="check-body">
-                    <div class="ci-title">质保期表述需明确单位</div>
-                    <div class="ci-desc">技术方案写"质保两年"，建议与偏离表统一为"24 个月"。</div>
-                  </div>
-                  <span class="tag orange">未填写</span>
-                </li>
-                <li class="check-item">
-                  <span class="check-mark pass">✓</span>
-                  <div class="check-body">
-                    <div class="ci-title">投标有效期满足要求</div>
-                    <div class="ci-desc">招标要求 90 天，投标函载明 90 天 —— 通过。</div>
-                  </div>
-                  <span class="tag green">通过</span>
-                </li>
-                <li class="check-item">
-                  <span class="check-mark pass">✓</span>
-                  <div class="check-body">
-                    <div class="ci-title">报价未超最高限价</div>
-                    <div class="ci-desc">投标总价 ¥3,985,000 ＜ 招标控制价 ¥4,200,000 —— 通过。</div>
-                  </div>
-                  <span class="tag green">通过</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">
-            <div class="card" style="margin-bottom:0">
-              <div class="card-header">
-                <h3>一致性检查（BR-49）</h3>
-                <span class="meta">名称/编号/包号/金额大小写上下文一致</span>
+            <div class="card-body" style="padding-top:0">
+              <div class="review-panel active" data-review-panel="disqualify">
+                <ul class="checklist">
+                  <li class="check-item">
+                    <span class="check-mark fail">!</span>
+                    <div class="check-body">
+                      <div class="ci-title">驻场人员数量未达废标线</div>
+                      <div class="ci-desc">招标要求 ≥8 人，我方技术方案 3.2 仅配置 6 人 —— 命中"否决条款"。</div>
+                      <div class="ci-quote">原文："驻场人员不足将作无效投标处理" · 投标人须知 5.3</div>
+                    </div>
+                    <span class="tag red">不通过</span>
+                  </li>
+                  <li class="check-item">
+                    <span class="check-mark fail">!</span>
+                    <div class="check-body">
+                      <div class="ci-title">缺少法定代表人授权委托书签字页</div>
+                      <div class="ci-desc">第一章 1.2 委托书为模板占位，未上传签字盖章扫描件 —— 实质性响应缺失。</div>
+                    </div>
+                    <span class="tag red">不通过</span>
+                  </li>
+                  <li class="check-item">
+                    <span class="check-mark warn">⚠</span>
+                    <div class="check-body">
+                      <div class="ci-title">质保期表述需明确单位</div>
+                      <div class="ci-desc">技术方案写"质保两年"，建议与偏离表统一为"24 个月"。</div>
+                    </div>
+                    <span class="tag orange">未填写</span>
+                  </li>
+                  <li class="check-item">
+                    <span class="check-mark pass">✓</span>
+                    <div class="check-body">
+                      <div class="ci-title">投标有效期满足要求</div>
+                      <div class="ci-desc">招标要求 90 天，投标函载明 90 天 —— 通过。</div>
+                    </div>
+                    <span class="tag green">通过</span>
+                  </li>
+                  <li class="check-item">
+                    <span class="check-mark pass">✓</span>
+                    <div class="check-body">
+                      <div class="ci-title">报价未超最高限价</div>
+                      <div class="ci-desc">投标总价 ¥3,985,000 ＜ 招标控制价 ¥4,200,000 —— 通过。</div>
+                    </div>
+                    <span class="tag green">通过</span>
+                  </li>
+                </ul>
               </div>
-              <div class="card-body">
+              <div class="review-panel" data-review-panel="consistency">
+                <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">BR-49 · 名称/编号/包号/金额大小写上下文一致</p>
                 <table class="data-table">
                   <thead><tr><th>检查项</th><th>位置</th><th>问题</th><th>状态</th></tr></thead>
                   <tbody>
@@ -4531,33 +4531,31 @@
                   </tbody>
                 </table>
               </div>
-            </div>
-            <div class="card" style="margin-bottom:0">
-              <div class="card-header">
-                <h3>报价复核（BR-50）</h3>
-                <span class="meta">单价×数量、折扣、税率自动核算</span>
-              </div>
-              <div class="card-body">
+              <div class="review-panel" data-review-panel="price">
+                <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">BR-50 · 单价×数量、折扣、税率自动核算</p>
                 <table class="data-table">
                   <thead><tr><th>清单项</th><th>系统核算</th><th>标书填写</th><th>结果</th></tr></thead>
                   <tbody>
                     <tr class="row-ineligible"><td>配网巡检（×12月）</td><td>1,860,000</td><td>1,680,000</td><td><span class="tag red">算术错误</span></td></tr>
                     <tr class="row-ineligible"><td>含税合计（税率9%）</td><td>3,985,650</td><td>3,985,000</td><td><span class="tag red">尾差 650</span></td></tr>
                     <tr><td>应急抢修</td><td>620,000</td><td>620,000</td><td><span class="tag green">正确</span></td></tr>
-                    <tr><td>不平衡报价检测</td><td>—</td><td>—</td><td><span class="tag yellow">巡检单价偏高</span></td></tr>
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
-
-          <div class="split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-            <div class="card" style="margin-bottom:0">
-              <div class="card-header">
-                <h3>原创性比对（BR-51）</h3>
-                <span class="meta">与本企业历史标书库比对，提示无意雷同</span>
+              <div class="review-panel" data-review-panel="quality">
+                <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">BR-51 · 不平衡报价、漏项、多项等完整性与质量自检</p>
+                <table class="data-table">
+                  <thead><tr><th>检查项</th><th>说明</th><th>状态</th></tr></thead>
+                  <tbody>
+                    <tr class="row-ineligible"><td>不平衡报价</td><td>配网巡检单价较同类项偏高约 12%</td><td><span class="tag yellow">建议复核</span></td></tr>
+                    <tr><td>漏项检查</td><td>报价清单 28 项与招标要求一致</td><td><span class="tag green">通过</span></td></tr>
+                    <tr><td>多项检查</td><td>未发现重复计列项</td><td><span class="tag green">通过</span></td></tr>
+                    <tr class="row-ineligible"><td>技术响应完整性</td><td>施工组织设计 3.2 节缺少雨季施工措施</td><td><span class="tag orange">待补充</span></td></tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="card-body">
+              <div class="review-panel" data-review-panel="originality">
+                <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">BR-51 · 与本企业历史标书库比对，提示无意雷同</p>
                 <div class="stat-row">
                   <div class="stat-box"><div class="num">93%</div><div class="lbl">原创度</div></div>
                   <div class="stat-box"><div class="num" style="color:var(--warning)">3</div><div class="lbl">雷同段落</div></div>
@@ -4574,13 +4572,8 @@
                   </li>
                 </ul>
               </div>
-            </div>
-            <div class="card" style="margin-bottom:0">
-              <div class="card-header">
-                <h3>提交前文件自检（BR-52）</h3>
-                <span class="meta">文档/编辑属性 · 防敏感信息带出</span>
-              </div>
-              <div class="card-body">
+              <div class="review-panel" data-review-panel="preflight">
+                <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">BR-52 · 文档/编辑属性 · 防敏感信息带出</p>
                 <ul class="checklist">
                   <li class="check-item">
                     <span class="check-mark fail">✕</span>
@@ -4621,11 +4614,11 @@
           <ul class="stage-flow">
             <li class="stage-step done"><span class="ss-no">✓</span> 智能审查</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">6</span> 评分测算</li>
+            <li class="stage-step active"><span class="ss-no">5</span> 评分测算</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 文件生成</li>
+            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">8</span> 审核</li>
+            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
           </ul>
 
           <div class="page-toolbar">
@@ -4791,9 +4784,9 @@
           <ul class="stage-flow">
             <li class="stage-step done"><span class="ss-no">✓</span> 评分测算</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">7</span> 投标文件生成</li>
+            <li class="stage-step active"><span class="ss-no">6</span> 投标文件生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">8</span> 审核</li>
+            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
           </ul>
 
           <div class="page-toolbar">
@@ -4962,9 +4955,9 @@
           <ul class="stage-flow">
             <li class="stage-step done"><span class="ss-no">✓</span> 投标文件生成</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">8</span> 投标文件审核</li>
+            <li class="stage-step active"><span class="ss-no">7</span> 投标文件审核</li>
             <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">9</span> 归档</li>
+            <li class="stage-step"><span class="ss-no">8</span> 归档</li>
           </ul>
 
           <div class="page-toolbar">
@@ -5209,19 +5202,19 @@
 
           <div class="card" style="margin-bottom:24px">
             <div class="card-header" style="padding:0;border:none">
-              <div class="summary-tabs">
-                <button class="summary-tab total active">全部 <span class="count-badge">428</span></button>
-                <button class="summary-tab">业绩</button>
-                <button class="summary-tab">合同</button>
-                <button class="summary-tab">发票</button>
-                <button class="summary-tab">审计报告</button>
-                <button class="summary-tab">人员资质</button>
-                <button class="summary-tab">图文素材</button>
+              <div class="summary-tabs" id="resourceTabs">
+                <button class="summary-tab total active" data-res-cat="all">全部 <span class="count-badge">428</span></button>
+                <button class="summary-tab" data-res-cat="业绩">业绩</button>
+                <button class="summary-tab" data-res-cat="合同">合同</button>
+                <button class="summary-tab" data-res-cat="发票">发票</button>
+                <button class="summary-tab" data-res-cat="审计报告">审计报告</button>
+                <button class="summary-tab" data-res-cat="人员资质">人员资质</button>
+                <button class="summary-tab" data-res-cat="图文素材">图文素材</button>
               </div>
               <span class="meta" style="padding-right:20px">支持导入导出 · 跨项目复用</span>
             </div>
             <div class="card-body">
-              <table class="data-table">
+              <table class="data-table" id="resourceTable">
                 <thead>
                   <tr>
                     <th>资源名称</th>
@@ -5234,7 +5227,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr data-res-cat="业绩">
                     <td>配网运维类业绩汇编</td>
                     <td><span class="tag green">业绩</span></td>
                     <td><span class="tag blue">v3.2</span></td>
@@ -5243,7 +5236,7 @@
                     <td>06-04 10:21</td>
                     <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
                   </tr>
-                  <tr>
+                  <tr data-res-cat="人员资质">
                     <td>承装(修、试)电力设施许可证</td>
                     <td><span class="tag blue">人员资质</span></td>
                     <td><span class="tag blue">v2.0</span></td>
@@ -5252,7 +5245,7 @@
                     <td>05-28 16:40</td>
                     <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
                   </tr>
-                  <tr class="row-ineligible">
+                  <tr class="row-ineligible" data-res-cat="人员资质">
                     <td>ISO9001 质量管理体系认证</td>
                     <td><span class="tag blue">人员资质</span></td>
                     <td><span class="tag blue">v1.5</span></td>
@@ -5261,7 +5254,7 @@
                     <td>2025-08-12</td>
                     <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm btn-primary">更新</button><span class="tag orange">90 天到期</span></td>
                   </tr>
-                  <tr>
+                  <tr data-res-cat="审计报告">
                     <td>2025 年度审计报告</td>
                     <td><span class="tag purple">审计报告</span></td>
                     <td><span class="tag blue">v1.0</span></td>
@@ -5270,7 +5263,25 @@
                     <td>05-15 09:05</td>
                     <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
                   </tr>
-                  <tr>
+                  <tr data-res-cat="合同">
+                    <td>鄂州配网工程服务框架合同</td>
+                    <td><span class="tag green">合同</span></td>
+                    <td><span class="tag blue">v1.0</span></td>
+                    <td><span class="tag outline">部门可见</span></td>
+                    <td>张专员</td>
+                    <td>05-20 11:30</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
+                  </tr>
+                  <tr data-res-cat="发票">
+                    <td>2025Q4 配网项目增值税专用发票</td>
+                    <td><span class="tag orange">发票</span></td>
+                    <td><span class="tag blue">v1.0</span></td>
+                    <td><span class="tag outline">受限</span></td>
+                    <td>财务部</td>
+                    <td>04-08 09:15</td>
+                    <td class="cell-actions"><button class="btn btn-sm">预览</button><button class="btn btn-sm">版本</button><button class="btn btn-sm">导出</button></td>
+                  </tr>
+                  <tr data-res-cat="图文素材">
                     <td>变电站现场施工图集</td>
                     <td><span class="tag yellow">图文素材</span></td>
                     <td><span class="tag blue">v4.1</span></td>
@@ -5437,15 +5448,54 @@
         });
       }
 
-      /* 人工校验 Tab 切换 */
-      document.querySelectorAll('.verify-tabs').forEach(function (tabs) {
-        tabs.addEventListener('click', function (e) {
+      /* 人工校验 / 智能审查 Tab 切换 */
+      document.querySelectorAll('.verify-tabs').forEach(function (tabsEl) {
+        tabsEl.addEventListener('click', function (e) {
           var tab = e.target.closest('.verify-tab');
           if (!tab) return;
-          tabs.querySelectorAll('.verify-tab').forEach(function (t) { t.classList.remove('active'); });
+          tabsEl.querySelectorAll('.verify-tab').forEach(function (t) { t.classList.remove('active'); });
           tab.classList.add('active');
+
+          if (tab.dataset.review) {
+            var card = tabsEl.closest('.card');
+            if (card) {
+              card.querySelectorAll('[data-review-panel]').forEach(function (panel) {
+                panel.classList.toggle('active', panel.dataset.reviewPanel === tab.dataset.review);
+              });
+            }
+            return;
+          }
+
+          if (tab.dataset.verify) {
+            var verifyCard = tabsEl.closest('.card');
+            var tbody = verifyCard && verifyCard.querySelector('.data-table tbody');
+            if (tbody) {
+              var mode = tab.dataset.verify;
+              tbody.querySelectorAll('tr').forEach(function (row) {
+                row.style.display = (mode === 'all' || row.dataset.verify === mode) ? '' : 'none';
+              });
+            }
+          }
         });
       });
+
+      /* 资源库分类 Tab 筛选 */
+      var resourceTabs = document.getElementById('resourceTabs');
+      if (resourceTabs) {
+        resourceTabs.addEventListener('click', function (e) {
+          var tab = e.target.closest('.summary-tab');
+          if (!tab) return;
+          resourceTabs.querySelectorAll('.summary-tab').forEach(function (t) {
+            t.classList.remove('active', 'total');
+          });
+          tab.classList.add('active');
+          if (tab.dataset.resCat === 'all') tab.classList.add('total');
+          var cat = tab.dataset.resCat || 'all';
+          document.querySelectorAll('#resourceTable tbody tr').forEach(function (row) {
+            row.style.display = (cat === 'all' || row.dataset.resCat === cat) ? '' : 'none';
+          });
+        });
+      }
 
       /* 模板卡片单选（投标文件生成） */
       document.querySelectorAll('.template-grid').forEach(function (grid) {
@@ -5485,6 +5535,12 @@
         document.getElementById('pageSubtitle').textContent =
           subtitles[panelId] || '模块功能占位 · 详见 PRD 第四部分';
       }
+
+      document.querySelectorAll('.quick-actions .action-btn[data-goto]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switchPanel(btn.dataset.goto, btn.dataset.title);
+        });
+      });
 
       document.getElementById('sidebarNav').addEventListener('click', function (e) {
         var toggle = e.target.closest('.nav-group-toggle');
