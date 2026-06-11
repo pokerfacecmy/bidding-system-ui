@@ -1492,9 +1492,12 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 11px; font-weight: 600; flex-shrink: 0;
     }
+    .stage-step.done { color: var(--text-secondary); }
     .stage-step.done .ss-no { background: var(--success); color: #fff; }
     .stage-step.active { color: var(--primary); font-weight: 600; }
     .stage-step.active .ss-no { background: var(--primary); color: #fff; }
+    .stage-step.clickable { cursor: pointer; }
+    .stage-step.clickable:hover { color: var(--primary); }
     .stage-flow > li.ss-arrow {
       display: flex;
       align-items: center;
@@ -3754,6 +3757,8 @@
             </div>
           </div>
 
+          <ul class="stage-flow" data-bid-stage="1"></ul>
+
           <div class="page-toolbar">
             <div class="page-toolbar-left">
               <span class="br-badge">D-06 · 第二期框架演示</span>
@@ -3887,21 +3892,7 @@
             </div>
           </div>
 
-          <ul class="stage-flow">
-            <li class="stage-step done"><span class="ss-no">✓</span> 投标项目管理</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">2</span> 招标文件解析</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">3</span> 标书生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">4</span> 智能审查</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">5</span> 评分测算</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
-          </ul>
+          <ul class="stage-flow" data-bid-stage="2"></ul>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
@@ -4200,19 +4191,7 @@
             </div>
           </div>
 
-          <ul class="stage-flow">
-            <li class="stage-step done"><span class="ss-no">✓</span> 招标文件解析</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">3</span> 标书生成与编写</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">4</span> 智能审查</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">5</span> 评分测算</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
-          </ul>
+          <ul class="stage-flow" data-bid-stage="3"></ul>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
@@ -4402,17 +4381,7 @@
             </div>
           </div>
 
-          <ul class="stage-flow">
-            <li class="stage-step done"><span class="ss-no">✓</span> 标书生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">4</span> 智能审查</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">5</span> 评分测算</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
-          </ul>
+          <ul class="stage-flow" data-bid-stage="4"></ul>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
@@ -4611,15 +4580,7 @@
             </div>
           </div>
 
-          <ul class="stage-flow">
-            <li class="stage-step done"><span class="ss-no">✓</span> 智能审查</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">5</span> 评分测算</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">6</span> 文件生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
-          </ul>
+          <ul class="stage-flow" data-bid-stage="5"></ul>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
@@ -4781,13 +4742,7 @@
             </div>
           </div>
 
-          <ul class="stage-flow">
-            <li class="stage-step done"><span class="ss-no">✓</span> 评分测算</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">6</span> 投标文件生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">7</span> 审核</li>
-          </ul>
+          <ul class="stage-flow" data-bid-stage="6"></ul>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
@@ -4952,13 +4907,7 @@
             </div>
           </div>
 
-          <ul class="stage-flow">
-            <li class="stage-step done"><span class="ss-no">✓</span> 投标文件生成</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step active"><span class="ss-no">7</span> 投标文件审核</li>
-            <li class="ss-arrow">→</li>
-            <li class="stage-step"><span class="ss-no">8</span> 归档</li>
-          </ul>
+          <ul class="stage-flow" data-bid-stage="7" data-bid-archive></ul>
 
           <div class="page-toolbar">
             <div class="page-toolbar-left">
@@ -5385,6 +5334,44 @@
       }
 
       document.getElementById('currentDate').textContent = formatDate(new Date());
+
+      /* 第二期投标作业 · 统一步骤条（始终展示完整 1～7 步，已完成保留序号） */
+      var bidStageSteps = [
+        { n: 1, label: '投标项目管理', panel: 'module-7', title: '投标项目管理' },
+        { n: 2, label: '招标文件解析', panel: 'module-8', title: '招标文件智能解析' },
+        { n: 3, label: '标书生成', panel: 'module-9', title: '标书内容智能生成' },
+        { n: 4, label: '智能审查', panel: 'module-10', title: '智能审查与废标审查' },
+        { n: 5, label: '评分测算', panel: 'module-11', title: '评分标准智能评分测算' },
+        { n: 6, label: '投标文件生成', panel: 'module-12', title: '投标文件生成' },
+        { n: 7, label: '投标文件审核', panel: 'module-13', title: '投标文件审核' }
+      ];
+      var bidArchiveStep = { n: 8, label: '归档', panel: null, title: null };
+
+      function renderBidStageFlows() {
+        document.querySelectorAll('.stage-flow[data-bid-stage]').forEach(function (flowEl) {
+          var active = parseInt(flowEl.dataset.bidStage, 10);
+          var steps = bidStageSteps.slice();
+          if (flowEl.hasAttribute('data-bid-archive')) steps.push(bidArchiveStep);
+          var html = '';
+          steps.forEach(function (step, idx) {
+            if (idx > 0) html += '<li class="ss-arrow">→</li>';
+            var cls = 'stage-step';
+            if (step.n < active) cls += ' done';
+            else if (step.n === active) cls += ' active';
+            if (step.panel) cls += ' clickable';
+            html += '<li class="' + cls + '"' +
+              (step.panel ? ' data-goto-panel="' + step.panel + '" data-goto-title="' + step.title + '"' : '') +
+              '><span class="ss-no">' + step.n + '</span> ' + step.label + '</li>';
+          });
+          flowEl.innerHTML = html;
+        });
+        document.querySelectorAll('.stage-flow .stage-step.clickable').forEach(function (stepEl) {
+          stepEl.addEventListener('click', function () {
+            switchPanel(stepEl.dataset.gotoPanel, stepEl.dataset.gotoTitle);
+          });
+        });
+      }
+      renderBidStageFlows();
 
       var subtitles = {
         overview: '先采集后投标 · 信息展示为主 · 核心指标集中看板',
